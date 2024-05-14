@@ -1,0 +1,97 @@
+/* reset default styles browser */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent font size inflation + set core font-size */
+html {
+  font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  scroll-behavior: smooth;
+}
+
+/* Set image responsive */
+:is(picture, video, canvas, svg) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-style: italic;
+  shape-margin: 0.75rem;
+}
+
+/* Balance text wrapping on headings + Prevent text from overflowing */
+:is(h1, h2, h3, h4, h5, h6) {
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+:is(p, label) {
+  font-family: var(--font-family);
+}
+
+:is(p) {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: var(--grayscale-color-600);
+  text-wrap: pretty;
+}
+
+:is(ul, ol) {
+  list-style: none;
+}
+
+/* Remove default appearance based on browser */
+:is(input, textarea, select) {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+}
+
+/* Allow only resize vertical on textarea */
+textarea {
+  resize: vertical;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+:is(label, button, input) {
+  line-height: 1.1;
+}
+
+/* Remove underline text on the link tag */
+a {
+  text-decoration: none;
+}
+
+/* Responsive table */
+table {
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+/* disable animations */
+@media (prefers-reduce-motion: reduce) {
+  * {
+    transition-duration: 0;
+    animation-duration: 0;
+  }
+}

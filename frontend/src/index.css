@@ -1,0 +1,57 @@
+:root {
+  --font-family: "Inter", sans-serif;
+
+  /* primary */
+  --primary-color-50: #f3f3ff;
+  --primary-color-100: #eae9fe;
+  --primary-color-200: #d8d6fe;
+  --primary-color-300: #bbb4fe;
+  --primary-color-400: #988afb;
+  --primary-color-500: #988afb;
+  --primary-color-600: #6538ef;
+  --primary-color-700: #5626db;
+  --primary-color-800: #4820b7;
+  --primary-color-900: #3d1c96;
+  --primary-color-950: #230f66;
+
+  /* grayscale */
+  --grayscale-color-50: #ffffff;
+  --grayscale-color-100: #efefef;
+  --grayscale-color-200: #dcdcdc;
+  --grayscale-color-300: #bdbdbd;
+  --grayscale-color-400: #989898;
+  --grayscale-color-500: #7c7c7c;
+  --grayscale-color-600: #656565;
+  --grayscale-color-700: #525252;
+  --grayscale-color-800: #464646;
+  --grayscale-color-900: #3d3d3d;
+  --grayscale-color-950: #292929;
+}
+
+/* set background color website */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--grayscale-color-50);
+}
+
+@media (max-width: 575px) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* modify selection text style */
+::selection {
+  background-color: var(--primary-color-50);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
