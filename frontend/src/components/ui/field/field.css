@@ -1,0 +1,26 @@
+.Field {
+  position: relative;
+  -webkit-margin-after: 2.4rem;
+  margin-block-end: 2.4rem;
+}
+
+.Field__error {
+  margin-block-start: 0.8rem;
+  font-size: 1.2rem;
+  color: var(--feedbackRed-color-500);
+}
+
+.FieldLabel {
+  display: block;
+  font-weight: 500;
+  color: var(--grayscale-color-800);
+  font-size: 1.4rem;
+  line-height: 1.5;
+  -webkit-margin-after: 0.5rem;
+  margin-block-end: 0.8rem;
+}
+
+.FieldLabel__required {
+  margin-inline-start: 0.4rem;
+  color: var(--feedbackRed-color-500);
+}

@@ -1,0 +1,7 @@
+.SignInForm__wrapper {
+  position: relative;
+}
+
+.SignInForm__input--error {
+  border: 1px solid var(--feedbackRed-color-500);
+}

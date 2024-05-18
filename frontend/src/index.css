@@ -26,6 +26,30 @@
   --grayscale-color-800: #464646;
   --grayscale-color-900: #3d3d3d;
   --grayscale-color-950: #292929;
+
+  /* feedback colors */
+  --feedbackRed-color-50: #fef2f2;
+  --feedbackRed-color-100: #fee2e2;
+  --feedbackRed-color-200: #ffc9c9;
+  --feedbackRed-color-300: #fda4a4;
+  --feedbackRed-color-400: #f97070;
+  --feedbackRed-color-500: #f03838;
+  --feedbackRed-color-600: #de2424;
+  --feedbackRed-color-700: #bb1a1a;
+  --feedbackRed-color-800: #9a1a1a;
+  --feedbackRed-color-900: #801c1c;
+  --feedbackRed-color-950: #460909;
+
+  /* border-radius */
+  --border-radius-xs: 0.4rem;
+  --border-radius-sm: 0.8rem;
+  --border-radius-md: 1.6rem;
+  --border-radius-lg: 3.2rem;
+}
+
+/* set font size website */
+html {
+  font-size: 62.5%;
 }
 
 /* set background color website */

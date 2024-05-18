@@ -1,0 +1,21 @@
+.Input {
+  width: 100%;
+  padding: 1.2rem 1.6rem;
+  line-height: 150%;
+  border: 1px solid var(--grayscale-color-200);
+  border-radius: var(--border-radius-sm);
+}
+
+.Input:focus-visible {
+  outline: 2px solid var(--primary-color-500);
+  border-color: var(--primary-color-500);
+}
+
+
+/* Autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
