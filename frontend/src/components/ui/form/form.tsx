@@ -1,4 +1,4 @@
-import { ReactNode, Children, isValidElement, cloneElement } from "react";
+import { Children, isValidElement, cloneElement, type PropsWithChildren, useEffect } from "react";
 import { useFetcher, FetcherFormProps, FetcherSubmitFunction } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,13 +10,27 @@ interface FormProps extends FetcherFormProps {
   formValues: object;
   formSchema: ZodSchema<object>;
   onSubmitForm: (data: object, fetcherSubmit: FetcherSubmitFunction) => void;
-  children: ReactNode;
 }
 
-const Form = ({ className, formValues, formSchema, onSubmitForm, children, ...props }: FormProps) => {
+const Form = ({
+  className,
+  formValues,
+  formSchema,
+  onSubmitForm,
+  children,
+  ...props
+}: PropsWithChildren<FormProps>) => {
   const { Form, data, state, submit } = useFetcher();
   const methods = useForm({ defaultValues: formValues, resolver: zodResolver(formSchema) });
   const onSubmit = methods.handleSubmit(data => onSubmitForm(data, submit));
+
+  // reset form if data is correct and fetcher is successful
+  useEffect(() => {
+    if(!data) return;
+
+    // reset form if fetcher is successful
+    if(data.ok) methods.reset();
+  }, [data]);
 
   // share of fetcher state to children
   const childrenWithProps = Children.map(children, child => {
