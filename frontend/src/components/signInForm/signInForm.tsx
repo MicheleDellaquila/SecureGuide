@@ -1,14 +1,14 @@
 import { FieldErrors, UseFormClearErrors } from "react-hook-form";
-import useShowPassword from "./hooks/useShowPassword";
-import ShowPassword from "@/components/showPassword/showPassword";
+import useShowPassword from "@/hooks/useShowPassword";
+import useShowModal from "@/hooks/useShowModalVerifyCode";
 
 import { Field } from "@/components/ui/field/field";
 import Input from "@/components/ui/input/input";
 import Button from "@/components/ui/button/button";
+import ShowPassword from "@/components/showPassword/showPassword";
 
 // styles
 import "./signInForm.css";
-import useShowModal from "./hooks/useShowModal";
 
 // sign in props
 interface SignInFormProps {
@@ -32,9 +32,9 @@ const SignInForm = ({ formState, errors, formResult, onClearErrors }: SignInForm
         <Input
           className={errors?.email?.message && "SignInForm__input--error"}
           type="email"
-          placeholder="example@gmail.com"
           id="email"
           name="email"
+          placeholder="example@gmail.com"
           onChange={() => onClearErrors?.(["email"])}
         />
       </Field>
@@ -44,9 +44,9 @@ const SignInForm = ({ formState, errors, formResult, onClearErrors }: SignInForm
           <Input
             className={errors?.password?.message && "SignInForm__input--error"}
             type={showPassword ? "text" : "password"}
-            placeholder="********"
             id="password"
             name="password"
+            placeholder="********"
             onChange={() => onClearErrors?.(["password"])}
           />
           <ShowPassword isVisible={showPassword} onChangeVisibility={handleShowPassword} />

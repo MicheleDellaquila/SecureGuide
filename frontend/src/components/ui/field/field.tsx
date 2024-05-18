@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { type PropsWithChildren } from "react";
 import "./field.css";
 
 // label props
@@ -20,11 +20,10 @@ const FieldLabel = ({ htmlFor, label, required }: FieldLabelProps) => {
 
 // field props
 interface FieldProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
   errorMessages?: string;
 }
 
-export const Field = ({ children, errorMessages }: FieldProps) => {
+export const Field = ({ errorMessages, children }: PropsWithChildren<FieldProps>) => {
   return (
     <div className="Field">
       {children}

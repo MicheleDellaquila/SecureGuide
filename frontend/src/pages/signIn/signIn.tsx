@@ -1,16 +1,9 @@
 import useSignIn from "./hook/useSignIn";
 import { signInSchema } from "@/utils/zodSchema";
-import {
-  slideSignInTitle,
-  slideSignInText,
-  slideSignIn2Title,
-  slideSign2InText,
-  slideSignIn3Title,
-  slideSignIn3Text,
-} from "@/utils/constants/slideInfo";
-import slideSignIn from "@/assets/images/slideSignIn.png";
-import slideSignIn2 from "@/assets/images/slideSignIn2.png";
-import slideSignIn3 from "@/assets/images/slideSignIn3.png";
+import { slideTitle, slideText, slideTitle2, slideText2, slideTitle3, slideText3 } from "@/utils/constants/slideInfo";
+import slideAuth from "@/assets/images/slideAuth.png";
+import slideAuth2 from "@/assets/images/slideAuth2.png";
+import slideAuth3 from "@/assets/images/slideAuth3.png";
 
 import GridContainer from "@/containers/gridContainer/gridContainer";
 import Form from "@/components/ui/form/form";
@@ -30,9 +23,9 @@ export const SignIn = () => {
       <GridContainer className="SignIn__container">
         <div className="SignIn__slider">
           <Carousel autoplay>
-            <Slide title={slideSignInTitle} text={slideSignInText} img={slideSignIn} />
-            <Slide title={slideSignIn2Title} text={slideSign2InText} img={slideSignIn2} />
-            <Slide title={slideSignIn3Title} text={slideSignIn3Text} img={slideSignIn3} />
+            <Slide title={slideTitle} text={slideText} img={slideAuth} />
+            <Slide title={slideTitle2} text={slideText2} img={slideAuth2} />
+            <Slide title={slideTitle3} text={slideText3} img={slideAuth3} />
           </Carousel>
         </div>
         <div className="SignIn__content">
