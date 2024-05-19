@@ -1,9 +1,9 @@
-import { type PropsWithChildren } from "react";
+import type { HTMLProps, PropsWithChildren } from "react";
 import "./field.css";
 
 // label props
-interface FieldLabelProps extends React.HTMLAttributes<HTMLLabelElement> {
-  htmlFor: string;
+interface FieldLabelProps extends HTMLProps<HTMLLabelElement> {
+  htmlFor?: string;
   label: string;
   required?: boolean;
 }
@@ -19,7 +19,7 @@ const FieldLabel = ({ htmlFor, label, required }: FieldLabelProps) => {
 };
 
 // field props
-interface FieldProps extends React.HTMLAttributes<HTMLDivElement> {
+interface FieldProps extends HTMLProps<HTMLDivElement> {
   errorMessages?: string;
 }
 
@@ -32,4 +32,5 @@ export const Field = ({ errorMessages, children }: PropsWithChildren<FieldProps>
   );
 };
 
+// export all components of field
 Field.Label = FieldLabel;

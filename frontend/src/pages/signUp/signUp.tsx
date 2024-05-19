@@ -32,7 +32,13 @@ export const SignUp = () => {
           <div className="SignUp__box">
             <h1 className="SignUp__box-title">Benvenuto!</h1>
             <p className="SignUp__box-text">Crea un account per iniziare a utilizzare l'applicazione.</p>
-            <Form className="SignUp__form" formValues={user} formSchema={signUpSchema} onSubmitForm={signUpUser}>
+            <Form
+              key="signUpForm"
+              className="SignUp__form"
+              formValues={user}
+              formSchema={signUpSchema}
+              onSubmitForm={signUpUser}
+            >
               <SignUpForm />
             </Form>
             <p className="SignUp__text">

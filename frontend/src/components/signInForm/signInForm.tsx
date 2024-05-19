@@ -1,7 +1,8 @@
-import { FieldErrors, UseFormClearErrors } from "react-hook-form";
+import type { FieldErrors, UseFormClearErrors } from "react-hook-form";
 import useShowPassword from "@/hooks/useShowPassword";
 import useShowModal from "@/hooks/useShowModalVerifyCode";
 
+// components
 import { Field } from "@/components/ui/field/field";
 import Input from "@/components/ui/input/input";
 import Button from "@/components/ui/button/button";

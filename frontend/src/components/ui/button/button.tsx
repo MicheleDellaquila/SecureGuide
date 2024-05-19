@@ -1,20 +1,21 @@
-import { ReactNode } from "react";
+import type { PropsWithChildren, ButtonHTMLAttributes } from "react";
 import "./button.css";
+import clsx from "clsx";
 
 // button props
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
   disabled?: boolean;
   size: "sm" | "md" | "lg";
   variant: "primary" | "secondary" | "tertiary";
   onClick?: () => void;
-  children: ReactNode;
 }
 
-const Button = ({ disabled = false, size, variant, onClick, children, ...rest }: ButtonProps) => {
+const Button = ({ className, disabled = false, size, variant, onClick, children, ...rest }: PropsWithChildren<ButtonProps>) => {
   const buttonStyle = `Btn Btn--${variant} Btn--${size}`;
 
   return (
-    <button className={buttonStyle} disabled={disabled} onClick={onClick} {...rest}>
+    <button className={clsx(buttonStyle, className)} disabled={disabled} onClick={onClick} {...rest}>
       {children}
     </button>
   );

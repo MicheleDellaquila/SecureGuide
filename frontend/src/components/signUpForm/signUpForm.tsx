@@ -1,8 +1,9 @@
-import { FieldErrors, UseFormClearErrors } from "react-hook-form";
+import type { FieldErrors, UseFormClearErrors } from "react-hook-form";
 import useShowPassword from "../../hooks/useShowPassword";
 import ShowPassword from "@/components/showPassword/showPassword";
 import useShowModal from "@/hooks/useShowModalVerifyCode";
 
+// components
 import { Field } from "@/components/ui/field/field";
 import Input from "@/components/ui/input/input";
 import Button from "@/components/ui/button/button";
@@ -20,7 +21,7 @@ interface SignUpFormProps {
   onClearErrors?: UseFormClearErrors<{ fullName: string; email: string; password: string }>;
 }
 
-const SignInForm = ({ formState, errors, formResult, onClearErrors }: SignUpFormProps) => {
+const SignUpForm = ({ formState, errors, formResult, onClearErrors }: SignUpFormProps) => {
   const { showPassword, handleShowPassword } = useShowPassword();
   const { showModal, closeModal } = useShowModal(formResult);
 
@@ -52,14 +53,13 @@ const SignInForm = ({ formState, errors, formResult, onClearErrors }: SignUpForm
         />
       </Field>
       <Field errorMessages={errors?.password?.message ?? ""}>
-        <Field.Label htmlFor="password" label="Password" required />
+        <Field.Label label="Password" required />
         <div className="SignUpForm__wrapper">
           <Input
             className={errors?.password?.message && "SignUpForm__input--error"}
             type={showPassword ? "text" : "password"}
-            id="password"
-            name="password"
             placeholder="********"
+            name="password"
             onChange={() => onClearErrors?.(["password"])}
           />
           <ShowPassword isVisible={showPassword} onChangeVisibility={handleShowPassword} />
@@ -72,4 +72,4 @@ const SignInForm = ({ formState, errors, formResult, onClearErrors }: SignUpForm
   );
 };
 
-export default SignInForm;
+export default SignUpForm;

@@ -5,6 +5,7 @@ import slideAuth from "@/assets/images/slideAuth.png";
 import slideAuth2 from "@/assets/images/slideAuth2.png";
 import slideAuth3 from "@/assets/images/slideAuth3.png";
 
+// components
 import GridContainer from "@/containers/gridContainer/gridContainer";
 import Form from "@/components/ui/form/form";
 import SignInForm from "@/components/signInForm/signInForm";
