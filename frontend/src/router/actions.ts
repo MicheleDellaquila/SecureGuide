@@ -1,4 +1,4 @@
-import type { ActionFunction } from "react-router-dom";
+import { type ActionFunction } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, firestore } from "@/services/firebase";
@@ -32,6 +32,12 @@ export const signUpAction: ActionFunction = async ({ request }) => {
     const fullName = formData.get("fullName")?.toString().trim();
     const email = formData.get("email")?.toString().trim();
     const password = formData.get("password")?.toString().trim();
+    const code = formData.get("code")?.toString().trim();
+    const action = formData.get("action")?.toString().trim();
+
+    // check if action is verifyCode
+    // TODO: IMPLEMENT API TO VERIFY CODE AND FUNCTION TO HANDLE IT
+    if (action === "verifyCode") return null;
 
     // check if email and password are provided
     if (!fullName || !email || !password) throw new Error("Fullname, Email e password sono richiesti");
