@@ -34,6 +34,7 @@ export const signUpAction: ActionFunction = async ({ request }) => {
     const password = formData.get("password")?.toString().trim();
     const code = formData.get("code")?.toString().trim();
     const action = formData.get("action")?.toString().trim();
+    console.log(code)
 
     // check if action is verifyCode
     // TODO: IMPLEMENT API TO VERIFY CODE AND FUNCTION TO HANDLE IT

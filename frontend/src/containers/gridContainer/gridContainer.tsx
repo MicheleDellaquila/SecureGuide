@@ -8,8 +8,8 @@ interface GridContainer extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
-const FlexContainer = ({ className, children }: GridContainer) => {
+const GridContainer = ({ className, children }: GridContainer) => {
   return <div className={clsx("GridContainer", className)}>{children}</div>;
 };
 
-export default FlexContainer;
+export default GridContainer;

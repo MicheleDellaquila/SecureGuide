@@ -16,6 +16,7 @@ interface VerifyCodeModalProps {
 
 const VerifyCodeModal = ({ onClose }: VerifyCodeModalProps) => {
   const { isInVerification, code, refForm, submitForm, verifyCodeForm } = useVerifyCode();
+  console.log(onClose);
 
   return (
     <Modal className="VerifyCodeModal">

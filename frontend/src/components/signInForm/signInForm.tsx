@@ -22,6 +22,7 @@ interface SignInFormProps {
 const SignInForm = ({ formState, errors, formResult, onClearErrors }: SignInFormProps) => {
   const { showPassword, handleShowPassword } = useShowPassword();
   const { showModal, closeModal } = useShowModal(formResult);
+  console.log(closeModal)
 
   // show modal
   if (showModal) return <p>modal</p>;

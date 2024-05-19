@@ -1,0 +1,16 @@
+.Home {
+  position: relative;
+}
+
+.Home__container {
+  grid-template-columns: repeat(12, 1fr);
+  gap: 3.2rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 3.2rem;
+}
+
+.Home__chat {
+  grid-column: 3 / 13;
+  border: 1px solid red;
+}
