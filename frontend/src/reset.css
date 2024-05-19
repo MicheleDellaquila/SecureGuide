@@ -38,6 +38,7 @@ img {
 
 /* Balance text wrapping on headings + Prevent text from overflowing */
 :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-family);
   text-wrap: balance;
   overflow-wrap: break-word;
 }
@@ -63,6 +64,26 @@ img {
   -webkit-appearance: none;
   -moz-appearance: none;
   outline: none;
+}
+
+/* Remove default appearance input number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 /* Allow only resize vertical on textarea */
