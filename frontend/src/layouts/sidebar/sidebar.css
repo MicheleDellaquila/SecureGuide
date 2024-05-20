@@ -33,7 +33,6 @@
 
 .Sidebar__footer {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   column-gap: 0.8rem;
   padding: 0.8rem;
@@ -66,7 +65,9 @@
 }
 
 .Sidebar__logout {
-  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  padding: 1.6rem;
   cursor: pointer;
 }
 
