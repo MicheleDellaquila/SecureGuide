@@ -33,3 +33,4 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_GUIDE_B1C89 }}"
           channelId: live
           projectId: guide-b1c89
+          entryPoint: frontend
