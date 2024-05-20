@@ -1,0 +1,7 @@
+.GoBack {
+  display: inline-block;
+}
+
+.GoBack__icon {
+  color: var(--grayscale-color-950);
+}
