@@ -5,15 +5,21 @@ import { loginAction, signUpAction } from "./actions";
 import { Root } from "./root";
 import { SignIn } from "@/pages/signIn/signIn";
 import { SignUp } from "@/pages/signUp/signUp";
-import { Home } from "@/pages/home/home";
-import ProtectedRoute from "@/components/protectedRoute/protectedRoute";
+import { ProtectedRoute } from "@/components/protectedRoute/protectedRoute";
+import { UpdateProfile } from "@/pages/updateProfile/updateProfile";
+
+// layouts
+import HomeLayout from "@/layouts/home/homeLayout";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index={true} action={loginAction} element={<SignIn />} />
       <Route path="/signUp" action={signUpAction} element={<SignUp />} />
-      <Route path="/home" element={<ProtectedRoute element={<Home />} />} />
+      <Route path="/home" element={<ProtectedRoute element={<HomeLayout />} />}>
+        <Route index={true} element={<p>chat</p>} />
+        <Route path="modifica-profilo" element={<UpdateProfile />} />
+      </Route>
     </Route>,
   ),
 );

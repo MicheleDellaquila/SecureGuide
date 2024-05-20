@@ -1,0 +1,4 @@
+.Card {
+  background-color: var(--grayscale-color-50);
+  border-radius: var(--border-radius-md);
+}

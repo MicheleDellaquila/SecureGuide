@@ -7,6 +7,8 @@ import { Field } from "@/components/ui/field/field";
 import Input from "@/components/ui/input/input";
 import Button from "@/components/ui/button/button";
 import ShowPassword from "@/components/showPassword/showPassword";
+import Portal from "@/containers/portal/portal";
+import VerifyCodeModal from "@/components/verifyCodeModal/verifyCodeModal";
 
 // styles
 import "./signInForm.css";
@@ -22,13 +24,12 @@ interface SignInFormProps {
 const SignInForm = ({ formState, errors, formResult, onClearErrors }: SignInFormProps) => {
   const { showPassword, handleShowPassword } = useShowPassword();
   const { showModal, closeModal } = useShowModal(formResult);
-  console.log(closeModal)
-
-  // show modal
-  if (showModal) return <p>modal</p>;
 
   return (
     <>
+      <Portal show={showModal} container={document.getElementById("modal")!}>
+        <VerifyCodeModal onClose={closeModal} />
+      </Portal>
       <Field errorMessages={errors?.email?.message ?? ""}>
         <Field.Label htmlFor="email" label="Email" required />
         <Input

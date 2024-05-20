@@ -5,7 +5,7 @@ interface ProtectedRouteProps {
   element: JSX.Element;
 }
 
-const ProtectedRoute = ({ element }: ProtectedRouteProps) => {
+export const ProtectedRoute = ({ element }: ProtectedRouteProps) => {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   // if user is logged out, redirect to /
@@ -14,4 +14,4 @@ const ProtectedRoute = ({ element }: ProtectedRouteProps) => {
   return element;
 };
 
-export default ProtectedRoute;
+
