@@ -1,3 +1,5 @@
+import useGetUser from "./hook/useUpdateProfile";
+
 // components
 import GoBack from "@/components/goBack/goBack";
 import Card from "@/components/ui/card/card";
@@ -8,14 +10,14 @@ import Form from "@/components/ui/form/form";
 import "./updateProfile.css";
 
 export const UpdateProfile = () => {
+  const { user, updateUser } = useGetUser();
+
   return (
     <div className="UpdateProfile">
       <Card className="UpdateProfile__card">
-        <div className="UpdateProfile__card-goBack">
-          <GoBack className="UpdateProfile__goBack" />
-        </div>
-        <h2>Modifica Profilo</h2>
-        <Form formValues={{}} onSubmitForm={() => {}}>
+        <GoBack className="UpdateProfile__card-goBack" />
+        <h1 className="UpdateProfile__title">Modifica Profilo</h1>
+        <Form formValues={user} onSubmitForm={updateUser}>
           <UpdateProfileForm />
         </Form>
       </Card>

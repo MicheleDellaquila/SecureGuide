@@ -1,7 +1,8 @@
-import { type ActionFunction } from "react-router-dom";
+import { redirect, type ActionFunction } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, updateDoc } from "firebase/firestore";
 import { auth, firestore } from "@/services/firebase";
+import { getDocReference } from "@/services/firebaseQuery";
 import { toast } from "react-toastify";
 
 /* FOR CORRECT SANITIZATION OF DATA, INSERT OK: TRUE ON EACH ACTION SO THE FORM CAN BE RESET */
@@ -34,7 +35,7 @@ export const signUpAction: ActionFunction = async ({ request }) => {
     const password = formData.get("password")?.toString().trim();
     const code = formData.get("code")?.toString().trim();
     const action = formData.get("action")?.toString().trim();
-    console.log(code)
+    console.log(code);
 
     // check if action is verifyCode
     // TODO: IMPLEMENT API TO VERIFY CODE AND FUNCTION TO HANDLE IT
@@ -51,6 +52,30 @@ export const signUpAction: ActionFunction = async ({ request }) => {
   } catch (error: any) {
     console.error(error);
     if (error.code === "auth/email-already-in-use") return toast.error("Email già in uso");
+    toast.error(error.message);
+    return null;
+  }
+};
+
+// update profile action
+export const updateProfileAction: ActionFunction = async ({ request }) => {
+  const formData = await request.formData();
+  const user = Object.fromEntries(formData);
+
+  try {
+    // check if user is authenticated
+    const currentUser = auth.currentUser;
+    if (!currentUser) throw new Error("Utente non autenticato");
+
+    // get user profile reference and update user data
+    const profileRef = await getDocReference("users", currentUser.uid);
+    await updateDoc(profileRef, { fullName: user.fullName, email: user.email });
+    await updateProfile(currentUser, user);
+
+    localStorage.setItem("user", JSON.stringify(user));
+    toast.success("Il tuo profilo è stato aggiornato con successo!");
+    return redirect("/home");
+  } catch (error: any) {
     toast.error(error.message);
     return null;
   }

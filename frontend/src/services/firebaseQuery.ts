@@ -10,3 +10,13 @@ export const getUser = async (userId: string) => {
     throw error;
   }
 };
+
+export const getDocReference = async (collectionName: string, docUid?: string) => {
+  try {
+    const documentUid = docUid || "";
+    const resourceRef = doc(firestore, collectionName, documentUid);
+    return resourceRef
+  } catch (error) {
+    throw error;
+  }
+}

@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   grid-column: 2 / 13;
-  border: 1px solid red;
+
 }
 
 .UpdateProfile__card {
@@ -30,6 +30,13 @@
   background-color: var(--primary-color-200);
 }
 
-.UpdateProfile__goBack > svg {
+.UpdateProfile__card-goBack > svg {
   color: var(--primary-color-600);
+}
+
+.UpdateProfile__title {
+  font-size: 2.4rem;
+  color: var(--grayscale-color-950);
+  -webkit-margin-after: 3.2rem;
+  margin-block-end: 3.2rem;
 }
