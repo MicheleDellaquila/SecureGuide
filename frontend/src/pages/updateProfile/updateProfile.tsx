@@ -1,4 +1,5 @@
 import useGetUser from "./hook/useUpdateProfile";
+import { updateProfileSchema } from "@/utils/zodSchema";
 
 // components
 import GoBack from "@/components/goBack/goBack";
@@ -17,7 +18,7 @@ export const UpdateProfile = () => {
       <Card className="UpdateProfile__card">
         <GoBack className="UpdateProfile__card-goBack" />
         <h1 className="UpdateProfile__title">Modifica Profilo</h1>
-        <Form formValues={user} onSubmitForm={updateUser}>
+        <Form formValues={user} formSchema={updateProfileSchema} onSubmitForm={updateUser}>
           <UpdateProfileForm />
         </Form>
       </Card>
