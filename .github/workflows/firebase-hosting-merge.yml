@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: "18"
 
       # Installazione delle dipendenze nella directory 'frontend'
       - name: Install dependencies
@@ -30,7 +30,7 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_GUIDE_B1C89 }}"
           channelId: live
           projectId: guide-b1c89
           entryPoint: frontend
