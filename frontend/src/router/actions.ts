@@ -1,5 +1,10 @@
 import { redirect, type ActionFunction } from "react-router-dom";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import { setDoc, doc, updateDoc } from "firebase/firestore";
 import { auth, firestore } from "@/services/firebase";
 import { getDocReference } from "@/services/firebaseQuery";
@@ -52,6 +57,25 @@ export const signUpAction: ActionFunction = async ({ request }) => {
   } catch (error: any) {
     console.error(error);
     if (error.code === "auth/email-already-in-use") return toast.error("Email già in uso");
+    toast.error(error.message);
+    return null;
+  }
+};
+
+// reset password action
+export const resetPasswordAction: ActionFunction = async ({ request }) => {
+  try {
+    const formData = await request.formData();
+    const email = formData.get("email")?.toString().trim();
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // check if email is provided or valid
+    if (!email || !regex.test(email)) throw new Error("Controlla l'email inserita");
+
+    await sendPasswordResetEmail(auth, email);
+    toast.success("Abbiamo inviato un'email per reimpostare la password!");
+    return redirect("/");
+  } catch (error: any) {
     toast.error(error.message);
     return null;
   }

@@ -5,3 +5,18 @@
 .SignInForm__input--error {
   border: 1px solid var(--feedbackRed-color-500);
 }
+
+.SignInForm__forgetPassword {
+  -webkit-margin-before: 0.8rem;
+  margin-block-start: 0.8rem;
+  font-family: var(--font-family);
+  font-size: 1.4rem;
+  text-decoration: underline;
+  color: var(--primary-color-500);
+  cursor: pointer;
+}
+
+.SignInForm__button {
+  -webkit-margin-before: 0.8rem;
+  margin-block-start: 0.8rem;
+}

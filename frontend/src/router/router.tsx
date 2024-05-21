@@ -1,5 +1,5 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
-import { loginAction, signUpAction, updateProfileAction } from "./actions";
+import { loginAction, resetPasswordAction, signUpAction, updateProfileAction } from "./actions";
 
 // pages
 import { Root } from "./root";
@@ -15,6 +15,7 @@ export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index={true} action={loginAction} element={<SignIn />} />
+      <Route path="/reset-password" action={resetPasswordAction} element={<p>ciao</p>} />
       <Route path="/signUp" action={signUpAction} element={<SignUp />} />
       <Route path="/home" element={<ProtectedRoute element={<HomeLayout />} />}>
         <Route index={true} element={<p>chat</p>} />

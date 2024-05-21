@@ -53,9 +53,10 @@ const SignInForm = ({ formState, errors, formResult, onClearErrors }: SignInForm
             onChange={() => onClearErrors?.(["password"])}
           />
           <ShowPassword isVisible={showPassword} onChangeVisibility={handleShowPassword} />
+          <p className="SignInForm__forgetPassword">Password dimentica?</p>
         </div>
       </Field>
-      <Button disabled={formState === "submitting"} size="md" variant="primary">
+      <Button className="SignInForm__button" disabled={formState === "submitting"} size="md" variant="primary">
         Accedi
       </Button>
     </>
