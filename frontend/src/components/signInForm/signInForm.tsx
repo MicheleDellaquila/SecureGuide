@@ -9,6 +9,7 @@ import Button from "@/components/ui/button/button";
 import ShowPassword from "@/components/showPassword/showPassword";
 import Portal from "@/containers/portal/portal";
 import VerifyCodeModal from "@/components/verifyCodeModal/verifyCodeModal";
+import { Link } from "react-router-dom";
 
 // styles
 import "./signInForm.css";
@@ -53,7 +54,7 @@ const SignInForm = ({ formState, errors, formResult, onClearErrors }: SignInForm
             onChange={() => onClearErrors?.(["password"])}
           />
           <ShowPassword isVisible={showPassword} onChangeVisibility={handleShowPassword} />
-          <p className="SignInForm__forgetPassword">Password dimentica?</p>
+          <Link className="SignInForm__forgetPassword" to="/reset-password">Password dimentica?</Link>
         </div>
       </Field>
       <Button className="SignInForm__button" disabled={formState === "submitting"} size="md" variant="primary">
