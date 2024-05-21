@@ -1,4 +1,4 @@
-const transporter = require("../config/nodemailerConfig");
+const transporter = require("../../config/nodemailerConfig");
 
 const sendEmail = async (email, code) => {
   const mailOptions = {

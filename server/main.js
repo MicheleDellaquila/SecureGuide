@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 
 // routes
-const emailRoutes = require('./api/routes/emailRoutes');
+const emailRoutes = require("./src/api/routes/emailRoutes");
 
 // create express app
 const app = express();
@@ -12,8 +13,8 @@ app.use(cors());
 
 // api
 app.use(express.json());
-app.use('/api/v1/email', emailRoutes);
+app.use("/api/v1/email", emailRoutes);
 
-app.listen(3000, () => {
-  console.log("Server in ascolto sulla porta 3000");
+app.listen(3001, () => {
+  console.log("Server in ascolto sulla porta 3001");
 });
