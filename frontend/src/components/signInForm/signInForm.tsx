@@ -1,14 +1,11 @@
 import type { FieldErrors, UseFormClearErrors } from "react-hook-form";
 import useShowPassword from "@/hooks/useShowPassword";
-import useShowModal from "@/hooks/useShowModalVerifyCode";
 
 // components
 import { Field } from "@/components/ui/field/field";
 import Input from "@/components/ui/input/input";
 import Button from "@/components/ui/button/button";
 import ShowPassword from "@/components/showPassword/showPassword";
-import Portal from "@/containers/portal/portal";
-import VerifyCodeModal from "@/components/verifyCodeModal/verifyCodeModal";
 import { Link } from "react-router-dom";
 
 // styles
@@ -22,15 +19,11 @@ interface SignInFormProps {
   onClearErrors?: UseFormClearErrors<{ email: string; password: string }>;
 }
 
-const SignInForm = ({ formState, errors, formResult, onClearErrors }: SignInFormProps) => {
+const SignInForm = ({ formState, errors, onClearErrors }: SignInFormProps) => {
   const { showPassword, handleShowPassword } = useShowPassword();
-  const { showModal, closeModal } = useShowModal(formResult);
 
   return (
     <>
-      <Portal show={showModal} container={document.getElementById("modal")!}>
-        <VerifyCodeModal onClose={closeModal} />
-      </Portal>
       <Field errorMessages={errors?.email?.message ?? ""}>
         <Field.Label htmlFor="email" label="Email" required />
         <Input
@@ -54,7 +47,9 @@ const SignInForm = ({ formState, errors, formResult, onClearErrors }: SignInForm
             onChange={() => onClearErrors?.(["password"])}
           />
           <ShowPassword isVisible={showPassword} onChangeVisibility={handleShowPassword} />
-          <Link className="SignInForm__forgetPassword" to="/reset-password">Password dimentica?</Link>
+          <Link className="SignInForm__forgetPassword" to="/reset-password">
+            Password dimentica?
+          </Link>
         </div>
       </Field>
       <Button className="SignInForm__button" disabled={formState === "submitting"} size="md" variant="primary">

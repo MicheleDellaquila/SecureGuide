@@ -9,6 +9,7 @@ import { setDoc, doc, updateDoc } from "firebase/firestore";
 import { auth, firestore } from "@/services/firebase";
 import { getDocReference } from "@/services/firebaseQuery";
 import { toast } from "react-toastify";
+import sendCode from "@/services/apis/sendCode";
 
 /* FOR CORRECT SANITIZATION OF DATA, INSERT OK: TRUE ON EACH ACTION SO THE FORM CAN BE RESET */
 
@@ -22,11 +23,18 @@ export const loginAction: ActionFunction = async ({ request }) => {
     // check if email and password are provided
     if (!email || !password) throw new Error("Email e password sono richiesti");
 
+    // sign in user with email and password and send code
     await signInWithEmailAndPassword(auth, email, password);
+    const codeVerification = await sendCode(email);
+
+    // save code in local storage
+    localStorage.setItem("code", codeVerification);
+
     toast.success("Login avvenuto con successo!");
-    return { isSuccessful: true, ok: true };
+    return { ok: true };
   } catch (error: any) {
     toast.error(error.message);
+    localStorage.removeItem("user");
     return null;
   }
 };
@@ -38,13 +46,6 @@ export const signUpAction: ActionFunction = async ({ request }) => {
     const fullName = formData.get("fullName")?.toString().trim();
     const email = formData.get("email")?.toString().trim();
     const password = formData.get("password")?.toString().trim();
-    const code = formData.get("code")?.toString().trim();
-    const action = formData.get("action")?.toString().trim();
-    console.log(code);
-
-    // check if action is verifyCode
-    // TODO: IMPLEMENT API TO VERIFY CODE AND FUNCTION TO HANDLE IT
-    if (action === "verifyCode") return null;
 
     // check if email and password are provided
     if (!fullName || !email || !password) throw new Error("Fullname, Email e password sono richiesti");
@@ -52,8 +53,13 @@ export const signUpAction: ActionFunction = async ({ request }) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     await setDoc(doc(firestore, "users", userCredential.user.uid), { fullName, email });
     await updateProfile(userCredential.user, { displayName: fullName });
+
+    // send code to user email and save it in local storage
+    const codeVerification = await sendCode(email);
+    localStorage.setItem("code", codeVerification);
+
     toast.success("Registrazione avvenuta con successo!");
-    return { isSuccessful: true, ok: true };
+    return { ok: true };
   } catch (error: any) {
     console.error(error);
     if (error.code === "auth/email-already-in-use") return toast.error("Email già in uso");
@@ -75,6 +81,24 @@ export const resetPasswordAction: ActionFunction = async ({ request }) => {
     await sendPasswordResetEmail(auth, email);
     toast.success("Abbiamo inviato un'email per reimpostare la password!");
     return redirect("/");
+  } catch (error: any) {
+    toast.error(error.message);
+    return null;
+  }
+};
+
+// verify code action
+export const verifyCodeAction: ActionFunction = async ({ request }) => {
+  try {
+    const formData = await request.formData();
+    const code = formData.get("code")?.toString().trim();
+    const codeGenerated = JSON.parse(localStorage.getItem("code") || "");
+
+    // check if code is provided and valid
+    if (!code || code !== codeGenerated) throw new Error("Codice non valido");
+
+    localStorage.removeItem("code");
+    return { isSuccessful: true, ok: true };
   } catch (error: any) {
     toast.error(error.message);
     return null;

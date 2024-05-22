@@ -1,14 +1,11 @@
 import type { FieldErrors, UseFormClearErrors } from "react-hook-form";
 import useShowPassword from "../../hooks/useShowPassword";
 import ShowPassword from "@/components/showPassword/showPassword";
-import useShowModal from "@/hooks/useShowModalVerifyCode";
 
 // components
 import { Field } from "@/components/ui/field/field";
 import Input from "@/components/ui/input/input";
 import Button from "@/components/ui/button/button";
-import Portal from "@/containers/portal/portal";
-import VerifyCodeModal from "@/components/verifyCodeModal/verifyCodeModal";
 
 // styles
 import "./signUpForm.css";
@@ -21,15 +18,11 @@ interface SignUpFormProps {
   onClearErrors?: UseFormClearErrors<{ fullName: string; email: string; password: string }>;
 }
 
-const SignUpForm = ({ formState, errors, formResult, onClearErrors }: SignUpFormProps) => {
+const SignUpForm = ({ formState, errors, onClearErrors }: SignUpFormProps) => {
   const { showPassword, handleShowPassword } = useShowPassword();
-  const { showModal, closeModal } = useShowModal(formResult);
 
   return (
     <>
-      <Portal show={showModal} container={document.getElementById("modal")!}>
-        <VerifyCodeModal onClose={closeModal} />
-      </Portal>
       <Field errorMessages={errors?.fullName?.message ?? ""}>
         <Field.Label htmlFor="fullName" label="FullName" required />
         <Input
