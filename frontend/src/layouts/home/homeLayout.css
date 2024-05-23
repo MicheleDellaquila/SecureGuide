@@ -9,3 +9,15 @@
   max-width: 100%;
   padding: 3.2rem;
 }
+
+@media (max-width: 991px) {
+  .HomeLayout__container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 479px) {
+  .HomeLayout__container {
+    padding: 1.6rem;
+  }
+}

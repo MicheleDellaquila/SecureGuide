@@ -1,0 +1,25 @@
+.HamburgerMenu {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .HamburgerMenu {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 10;
+    inset-block-start: 1.6rem;
+    inset-inline-end: 1.6rem;
+  }
+}
+
+.HamburgerMenu__inner {
+  padding: 0.8rem;
+  background-color: var(--grayscale-color-100);
+  border-radius: var(--border-radius-xs);
+}
+
+.HamburgerMenu__inner:active {
+  background-color: var(--grayscale-color-200);
+  border-radius: var(--border-radius-xs);
+}

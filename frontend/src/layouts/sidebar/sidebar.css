@@ -5,6 +5,33 @@
   border-radius: var(--border-radius-md);
   background-color: var(--primary-color-200);
   height: calc(100vh - 6.4rem);
+  transition: inset-inline-start 500ms ease-in-out;
+}
+
+@media (max-width: 991px) {
+  .Sidebar {
+    position: absolute;
+    inset-inline-start: -100%;
+  }
+}
+
+@media (max-width: 479px) {
+  .Sidebar {
+    width: 100%;
+    height: 100vh;
+    inset-block-start: 0;
+    border-radius: 0;
+  }
+}
+
+.Sidebar--open {
+  inset-inline-start: 1.6rem;
+}
+
+@media (max-width: 479px) {
+  .Sidebar--open {
+    inset-inline-start: 0;
+  }
 }
 
 .Sidebar__header {
@@ -29,6 +56,8 @@
 
 .Sidebar__box {
   flex: 1;
+  padding-block: 2.4rem;
+  overflow-y: scroll;
 }
 
 .Sidebar__footer {
