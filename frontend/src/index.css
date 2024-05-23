@@ -45,6 +45,8 @@
   --border-radius-sm: 0.8rem;
   --border-radius-md: 1.6rem;
   --border-radius-lg: 3.2rem;
+
+  --chat-bg-color: 187, 180, 254;
 }
 
 /* set font size website */
@@ -62,7 +64,7 @@ body {
   background-color: var(--grayscale-color-50);
 }
 
-@media (max-width: 575px) {
+@media (max-width: 479px) {
   body {
     min-height: -webkit-fill-available;
   }
