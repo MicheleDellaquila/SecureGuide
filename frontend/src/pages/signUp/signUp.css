@@ -12,7 +12,7 @@
   }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 479px) {
   .SignUp {
     padding-block: 3.2rem;
   }
@@ -59,7 +59,7 @@
   }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 479px) {
   .SignUp__content {
     padding: 1.6rem;
   }
@@ -73,7 +73,7 @@
   font-family: var(--font-family);
 }
 
-@media (max-width: 575px) {
+@media (max-width: 479px) {
   .SignUp__box {
     padding: 2.4rem;
   }
