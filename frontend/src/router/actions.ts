@@ -9,7 +9,6 @@ import { setDoc, doc, updateDoc } from "firebase/firestore";
 import { auth, firestore } from "@/services/firebase";
 import { getDocReference } from "@/services/firebaseQuery";
 import { toast } from "react-toastify";
-import sendCode from "@/services/apis/sendCode";
 
 /* FOR CORRECT SANITIZATION OF DATA, INSERT OK: TRUE ON EACH ACTION SO THE FORM CAN BE RESET */
 
@@ -25,10 +24,6 @@ export const loginAction: ActionFunction = async ({ request }) => {
 
     // sign in user with email and password and send code
     await signInWithEmailAndPassword(auth, email, password);
-    const codeVerification = await sendCode(email);
-
-    // save code in local storage
-    localStorage.setItem("code", codeVerification);
 
     toast.success("Login avvenuto con successo!");
     return { ok: true };
@@ -53,10 +48,6 @@ export const signUpAction: ActionFunction = async ({ request }) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     await setDoc(doc(firestore, "users", userCredential.user.uid), { fullName, email });
     await updateProfile(userCredential.user, { displayName: fullName });
-
-    // send code to user email and save it in local storage
-    const codeVerification = await sendCode(email);
-    localStorage.setItem("code", codeVerification);
 
     toast.success("Registrazione avvenuta con successo!");
     return { ok: true };
