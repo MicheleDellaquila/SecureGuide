@@ -1,9 +1,0 @@
-.FormCode {
-  display: flex;
-  column-gap: 0.8rem;
-}
-
-.FormCode__input--disabled {
-  opacity: 0.5;
-  pointer-events: none;
-}

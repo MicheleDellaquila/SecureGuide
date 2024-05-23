@@ -1,5 +1,5 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
-import { loginAction, resetPasswordAction, signUpAction, updateProfileAction, verifyCodeAction } from "./actions";
+import { loginAction, resetPasswordAction, signUpAction, updateProfileAction } from "./actions";
 
 // pages
 import { Root } from "./root";
@@ -7,7 +7,6 @@ import { SignIn } from "@/pages/signIn/signIn";
 import { SignUp } from "@/pages/signUp/signUp";
 import { ProtectedRoute } from "@/components/protectedRoute/protectedRoute";
 import { UpdateProfile } from "@/pages/updateProfile/updateProfile";
-import { VerifyAccount } from "@/pages/verifyAccount/verifyAccount";
 
 // layouts
 import HomeLayout from "@/layouts/home/homeLayout";
@@ -18,7 +17,6 @@ export const router = createBrowserRouter(
       <Route index={true} action={loginAction} element={<SignIn />} />
       <Route path="/reset-password" action={resetPasswordAction} element={<p>ciao</p>} />
       <Route path="/signUp" action={signUpAction} element={<SignUp />} />
-      <Route path="/verify-account" action={verifyCodeAction} element={<VerifyAccount />} />
       <Route path="/home" element={<ProtectedRoute element={<HomeLayout />} />}>
         <Route index={true} element={<p>chat</p>} />
         <Route path="modifica-profilo" action={updateProfileAction} element={<UpdateProfile />} />

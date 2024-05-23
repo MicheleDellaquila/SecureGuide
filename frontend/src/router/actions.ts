@@ -87,24 +87,6 @@ export const resetPasswordAction: ActionFunction = async ({ request }) => {
   }
 };
 
-// verify code action
-export const verifyCodeAction: ActionFunction = async ({ request }) => {
-  try {
-    const formData = await request.formData();
-    const code = formData.get("code")?.toString().trim();
-    const codeGenerated = JSON.parse(localStorage.getItem("code") || "");
-
-    // check if code is provided and valid
-    if (!code || code !== codeGenerated) throw new Error("Codice non valido");
-
-    localStorage.removeItem("code");
-    return { isSuccessful: true, ok: true };
-  } catch (error: any) {
-    toast.error(error.message);
-    return null;
-  }
-};
-
 // update profile action
 export const updateProfileAction: ActionFunction = async ({ request }) => {
   const formData = await request.formData();

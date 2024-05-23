@@ -20,7 +20,7 @@ const useAutoLogin = () => {
           const userInfo = await getUser(uid);
           localStorage.setItem("user", JSON.stringify({ ...userInfo }));
           setLoader(false);
-          navigate("/verify-account")
+          navigate("/home")
         } catch (error: any) {
           setLoader(false);
           toast.error(error.message);
