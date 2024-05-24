@@ -1,0 +1,40 @@
+@import "./variable";
+@import "./functions/functions";
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+}
+
+@each $breakpoint, $value in $grid-breakpoints {
+  @media (min-width: $value) {
+    .container {
+      max-width: valueMap($container-max-widths, $breakpoint);
+    }
+  }
+}
+
+.container__fluid {
+  width: 100%;
+  max-width: 100%;
+}
+
+.container,
+.container__fluid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@each $breakpoint, $value in $grid-breakpoints {
+  @for $i from 1 through $grid-columns {
+    @media (min-width: $value) {
+      .col-#{$breakpoint}-#{$i} {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        width: calc((100% / $grid-columns) * $i);
+        padding-inline: valueMap($grid-gutter, $breakpoint);
+      }
+    }
+  }
+}

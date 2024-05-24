@@ -1,3 +1,6 @@
+@import "./gridSystem";
+@import "./reset";
+
 :root {
   --font-family: "Inter", sans-serif;
 
@@ -47,27 +50,7 @@
   --border-radius-lg: 3.2rem;
 
   --chat-bg-color: 187, 180, 254;
-}
-
-/* set font size website */
-html {
-  font-size: 62.5%;
-}
-
-/* set background color website */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--grayscale-color-50);
-}
-
-@media (max-width: 479px) {
-  body {
-    min-height: -webkit-fill-available;
-  }
+  --textarea-bg-color: 239, 239, 239;
 }
 
 /* modify selection text style */

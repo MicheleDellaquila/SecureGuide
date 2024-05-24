@@ -19,6 +19,16 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  min-height: -webkit-fill-available;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
 /* Set image responsive */
 :is(picture, video, canvas, svg) {
   display: block;
@@ -50,8 +60,8 @@ img {
 :is(p) {
   font-size: 1.6rem;
   line-height: 1.5;
-  color: var(--grayscale-color-600);
   text-wrap: pretty;
+  color: var(--grayscale-color-600);
 }
 
 :is(ul, ol) {
@@ -89,11 +99,13 @@ input:-webkit-autofill:active {
 /* Allow only resize vertical on textarea */
 textarea {
   resize: vertical;
+  font-family: var(--font-family);
 }
 
 /* Set shorter line heights on headings and interactive elements */
 :is(label, button, input) {
   line-height: 1.1;
+  font-family: var(--font-family);
 }
 
 /* Remove underline text on the link tag */
