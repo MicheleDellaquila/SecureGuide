@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import "./card.css";
+import "./card.scss";
 import clsx from "clsx";
 
 // Card props

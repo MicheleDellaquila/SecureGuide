@@ -1,0 +1,53 @@
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color-200);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.6rem;
+  }
+
+  &__box {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--grayscale-color-950);
+  }
+
+  &__addIcon {
+    padding: 0.8rem;
+    cursor: pointer;
+
+    & > svg {
+      color: var(--primary-color-700);
+    }
+
+    &:hover,
+    &:active {
+      background-color: var(--primary-color-300);
+      border-radius: var(--border-radius-sm);
+    }
+  }
+
+  &__chats {
+    flex: 1;
+    padding-block: 2.4rem;
+    overflow-y: scroll;
+  }
+
+  &__footer {
+    padding: 0.8rem;
+  }
+}

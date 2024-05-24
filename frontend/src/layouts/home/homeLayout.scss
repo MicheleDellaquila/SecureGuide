@@ -1,0 +1,9 @@
+.HomeLayout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.HomeLayout__container {
+  flex: 1;
+}

@@ -1,5 +1,5 @@
 import type { HTMLProps, PropsWithChildren } from "react";
-import "./field.css";
+import "./field.scss";
 
 // label props
 interface FieldLabelProps extends HTMLProps<HTMLLabelElement> {

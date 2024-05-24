@@ -1,5 +1,5 @@
 import type { PropsWithChildren, ButtonHTMLAttributes } from "react";
-import "./button.css";
+import "./button.scss";
 import clsx from "clsx";
 
 // button props

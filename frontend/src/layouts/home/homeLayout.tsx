@@ -1,23 +1,28 @@
-import GridContainer from "@/containers/gridContainer/gridContainer";
+// components
+import Container from "@/containers/container/container";
 import Sidebar from "../sidebar/sidebar";
 import { Outlet } from "react-router-dom";
+
+// context providers
 import { ChatsProvider } from "@/context/chatsCtx/chatsCtx";
 import { FocusTextAreaCtxProvider } from "@/context/focusTextAreaCtx/focusTextAreaCtx";
 
 // styles
-import "./homeLayout.css";
+import "./homeLayout.scss";
 
 const HomeLayout = () => {
+  
+
   return (
     <div className="HomeLayout">
-      <GridContainer className="HomeLayout__container">
+      <Container className="HomeLayout__container" full>
         <ChatsProvider>
           <FocusTextAreaCtxProvider>
             <Sidebar />
             <Outlet />
           </FocusTextAreaCtxProvider>
         </ChatsProvider>
-      </GridContainer>
+      </Container>
     </div>
   );
 };

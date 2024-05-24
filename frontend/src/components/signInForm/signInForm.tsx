@@ -9,7 +9,7 @@ import ShowPassword from "@/components/showPassword/showPassword";
 import { Link } from "react-router-dom";
 
 // styles
-import "./signInForm.css";
+import "./signInForm.scss";
 
 // sign in props
 interface SignInFormProps {

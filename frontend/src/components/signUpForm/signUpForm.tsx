@@ -8,7 +8,7 @@ import Input from "@/components/ui/input/input";
 import Button from "@/components/ui/button/button";
 
 // styles
-import "./signUpForm.css";
+import "./signUpForm.scss";
 
 // sign up props
 interface SignUpFormProps {

@@ -1,4 +1,4 @@
-import "./textarea.css";
+import "./textarea.scss";
 import clsx from "clsx";
 import { forwardRef, type HTMLProps } from "react";
 import { useFormContext } from "react-hook-form";

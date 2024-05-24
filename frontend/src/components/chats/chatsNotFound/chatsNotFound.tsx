@@ -5,7 +5,7 @@ import { MessagesSquare } from "lucide-react";
 import Button from "@/components/ui/button/button";
 
 // styles
-import "./chatsNotFound.css";
+import "./chatsNotFound.scss";
 
 const ChatsNotFound = () => {
   const { focusTextArea } = useFocusTextAreaCtxAction();

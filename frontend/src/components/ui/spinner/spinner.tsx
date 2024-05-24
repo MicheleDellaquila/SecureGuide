@@ -1,4 +1,4 @@
-import "./spinner.css";
+import "./spinner.scss";
 import clsx from "clsx";
 
 // Spinner props

@@ -1,4 +1,4 @@
-import "./showPassword.css"
+import "./showPassword.scss"
 import { Eye, EyeOff } from "lucide-react";
 
 // show password props

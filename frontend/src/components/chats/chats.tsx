@@ -1,4 +1,4 @@
-import "./chats.css";
+import "./chats.scss";
 import useChatsCtx from "@/context/chatsCtx/useChatsCtx";
 
 // components

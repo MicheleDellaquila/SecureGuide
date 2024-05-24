@@ -1,5 +1,5 @@
 import { type HTMLProps, forwardRef } from "react";
-import "./input.css";
+import "./input.scss";
 import clsx from "clsx";
 import { useFormContext } from "react-hook-form";
 import getInputRef from "@/utils/getInputRef";
