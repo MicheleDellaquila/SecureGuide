@@ -1,0 +1,18 @@
+.Textare {
+  width: 100%;
+  line-height: 150%;
+  border: 1px solid var(--grayscale-color-200);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family);
+  resize: none;
+}
+
+.Textare::placeholder,
+.Textare:placeholder-shown {
+  color: var(--grayscale-color-500);
+}
+
+.Textare:focus-visible {
+  outline: 2px solid var(--primary-color-500);
+  border-color: var(--primary-color-500);
+}

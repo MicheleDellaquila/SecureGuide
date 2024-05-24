@@ -1,12 +1,12 @@
 import useSignIn from "./hook/useSignIn";
 import { signInSchema } from "@/utils/zodSchema";
 import { slideTitle, slideText, slideTitle2, slideText2, slideTitle3, slideText3 } from "@/utils/constants/slideInfo";
-import slideAuth from "@/assets/images/slideAuth.png";
+import slideAuth from "@/assets/images/slideAuth.webp";
 import slideAuth2 from "@/assets/images/slideAuth2.png";
 import slideAuth3 from "@/assets/images/slideAuth3.png";
 
 // components
-import GridContainer from "@/containers/gridContainer/gridContainer";
+import Container from "@/containers/container/container";
 import Form from "@/components/ui/form/form";
 import SignInForm from "@/components/signInForm/signInForm";
 import Carousel from "@/components/ui/carousel/carousel";
@@ -14,22 +14,22 @@ import Slide from "@/containers/slide/slide";
 import { Link } from "react-router-dom";
 
 // styles
-import "./signIn.css";
+import "./signIn.scss";
 
 export const SignIn = () => {
   const { user, loginUser } = useSignIn();
 
   return (
     <div className="SignIn">
-      <GridContainer className="SignIn__container">
-        <div className="SignIn__slider">
+      <Container className="SignIn__container" full>
+        <div className="col-xs-12 col-lg-7 SignIn__col-1">
           <Carousel autoplay>
             <Slide title={slideTitle} text={slideText} img={slideAuth} />
             <Slide title={slideTitle2} text={slideText2} img={slideAuth2} />
             <Slide title={slideTitle3} text={slideText3} img={slideAuth3} />
           </Carousel>
         </div>
-        <div className="SignIn__content">
+        <div className="col-xs-12 col-md-8 col-lg-5 col-xl-4 SignIn__col-2">
           <div className="SignIn__box">
             <h1 className="SignIn__box-title">Bentornato</h1>
             <p className="SignIn__box-text">
@@ -46,7 +46,7 @@ export const SignIn = () => {
             </p>
           </div>
         </div>
-      </GridContainer>
+      </Container>
     </div>
   );
 };

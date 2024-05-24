@@ -2,6 +2,7 @@ import GridContainer from "@/containers/gridContainer/gridContainer";
 import Sidebar from "../sidebar/sidebar";
 import { Outlet } from "react-router-dom";
 import { ChatsProvider } from "@/context/chatsCtx/chatsCtx";
+import { FocusTextAreaCtxProvider } from "@/context/focusTextAreaCtx/focusTextAreaCtx";
 
 // styles
 import "./homeLayout.css";
@@ -11,8 +12,10 @@ const HomeLayout = () => {
     <div className="HomeLayout">
       <GridContainer className="HomeLayout__container">
         <ChatsProvider>
-          <Sidebar />
-          <Outlet />
+          <FocusTextAreaCtxProvider>
+            <Sidebar />
+            <Outlet />
+          </FocusTextAreaCtxProvider>
         </ChatsProvider>
       </GridContainer>
     </div>

@@ -18,12 +18,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ className, type, place
 
   return (
     <input
-    ref={refEl => getInputRef(ref, refEl, refInput)}
-    className={clsx("Input", className)}
-    type={type}
-    placeholder={placeholder}
-    {...rest}
-    {...props}
+      ref={refEl => getInputRef(ref, refEl, refInput)}
+      className={clsx("Input", className)}
+      type={type}
+      placeholder={placeholder}
+      {...rest}
+      {...props}
     />
   );
 });

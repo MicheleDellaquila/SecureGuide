@@ -1,10 +1,10 @@
 .Sidebar {
   display: flex;
   flex-direction: column;
-  min-width: 32rem;
+  grid-column: 1 / 3;
   border-radius: var(--border-radius-md);
   background-color: var(--primary-color-200);
-  height: calc(100vh - 6.4rem);
+  height: 100%;
   transition: inset-inline-start 500ms ease-in-out;
 }
 
@@ -25,7 +25,9 @@
 }
 
 .Sidebar--open {
-  inset-inline-start: 1.6rem;
+  height: 100%;
+  inset-inline-start: 0;
+  border-radius: 0;
 }
 
 @media (max-width: 479px) {
@@ -37,7 +39,13 @@
 .Sidebar__header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 1.6rem;
+}
+
+.Sidebar__box {
+  display: flex;
+  align-items: center;
 }
 
 .Sidebar__logo {
@@ -54,7 +62,17 @@
   color: var(--grayscale-color-950);
 }
 
-.Sidebar__box {
+.Sidebar__addChatIcon {
+  color: var(--primary-color-600);
+  cursor: pointer;
+}
+
+.Sidebar__addChatIcon:hover,
+.Sidebar__addChatIcon:active {
+  color: var(--primary-color-700);
+}
+
+.Sidebar__chats {
   flex: 1;
   padding-block: 2.4rem;
   overflow-y: scroll;

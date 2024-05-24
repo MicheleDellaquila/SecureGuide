@@ -1,5 +1,5 @@
 .HomeLayout {
-  position: relative;
+  height: 100%;
 }
 
 .HomeLayout__container {
@@ -7,12 +7,15 @@
   gap: 3.2rem;
   width: 100%;
   max-width: 100%;
-  padding: 3.2rem;
+  height: 100%;
+  padding: 1.6rem;
 }
 
 @media (max-width: 991px) {
   .HomeLayout__container {
     grid-template-columns: 1fr;
+    height: 100vh;
+    padding: 0;
   }
 }
 

@@ -5,10 +5,10 @@ import useAutoLogin from "./hook/useAutoLogin";
 import PageLoading from "@/containers/pageLoading/pageLoading";
 
 export const Root = () => {
-  const { loader } = useAutoLogin();
+  // const { loader } = useAutoLogin();
 
-  // show spinner while checking user sign
-  if (loader) return <PageLoading />;
+  // // show spinner while checking user sign
+  // if (loader) return <PageLoading />;
 
   return <Outlet />;
 };

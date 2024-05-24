@@ -10,11 +10,13 @@
 }
 
 .Chat__title {
+  font-family: var(--font-family);
   font-size: 1.6rem;
   font-weight: bold;
   line-height: 150%;
 }
 
 .Chat__date {
+  font-family: var(--font-family);
   font-size: 1.2rem;
 }

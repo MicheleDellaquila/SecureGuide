@@ -1,0 +1,36 @@
+.Slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  flex: 0 0 auto;
+
+  &__box {
+    padding-inline: 3.6rem;
+
+    &-title {
+      font-size: 3.2rem;
+      font-weight: bold;
+      line-height: 120%;
+      text-align: center;
+      -webkit-margin-after: 0.8rem;
+      margin-block-end: 0.8rem;
+      color: var(--grayscale-color-950);
+
+      @media (max-width: 1023px) {
+        font-size: calc(2.4rem + 1vw);
+      }
+    }
+
+    &-text {
+      max-width: 52rem;
+      margin-inline: auto;
+      text-align: center;
+      color: var(--grayscale-color-600);
+    }
+
+    @media (max-width: 479px) {
+      padding-inline: 1.6rem;
+    }
+  }
+}

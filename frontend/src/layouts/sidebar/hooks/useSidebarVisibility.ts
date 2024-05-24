@@ -4,7 +4,9 @@ const useSidebarVisibility = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   // toggle sidebar
-  const toggleSidebarVisibility = () => setIsVisible(prev => !prev);
+  const toggleSidebarVisibility = () => {
+    setIsVisible(prev => !prev);
+  };
 
   return { isVisible, toggleSidebarVisibility };
 };

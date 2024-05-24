@@ -1,4 +1,4 @@
-import "./slide.css";
+import "./slide.scss";
 
 // Slide props
 interface SlideProps {
