@@ -1,0 +1,33 @@
+.ChatForm {
+  padding: 0.8rem 1.2rem;
+  background-color: rgba(var(--textarea-bg-color), 0.5);
+  border-radius: var(--border-radius-lg);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    column-gap: 0.8rem;
+    padding-inline: 0.4rem;
+  }
+
+  &__textarea {
+    height: 40px;
+    font-size: 1.6rem;
+    border: none;
+    background-color: inherit;
+    padding-block: 0.8rem;
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 4px;
+    border-radius: 50%;
+  }
+}

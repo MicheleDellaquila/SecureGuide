@@ -1,5 +1,5 @@
 import type { FieldErrors, UseFormClearErrors } from "react-hook-form";
-import useShowPassword from "../../hooks/useShowPassword";
+import useShowPassword from "@/hooks/useShowPassword";
 import ShowPassword from "@/components/showPassword/showPassword";
 
 // components

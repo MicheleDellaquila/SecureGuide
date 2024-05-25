@@ -1,5 +1,5 @@
 import type { CSSProperties, PropsWithChildren } from "react";
-import "./carousel.css";
+import "./carousel.scss";
 import useSlider from "./hook/useSlider";
 
 // Carousel props

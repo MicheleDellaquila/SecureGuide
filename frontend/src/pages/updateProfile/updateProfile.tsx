@@ -4,7 +4,7 @@ import { updateProfileSchema } from "@/utils/zodSchema";
 // components
 import GoBack from "@/components/goBack/goBack";
 import Card from "@/components/ui/card/card";
-import UpdateProfileForm from "@/components/updateProfileForm/updateProfileForm";
+import UpdateProfileForm from "./updateProfileForm/updateProfileForm";
 import Form from "@/components/ui/form/form";
 
 // styles

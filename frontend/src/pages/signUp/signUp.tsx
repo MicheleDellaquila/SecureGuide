@@ -8,7 +8,7 @@ import slideAuth3 from "@/assets/images/slideAuth3.png";
 // components
 import Container from "@/containers/container/container";
 import Form from "@/components/ui/form/form";
-import SignUpForm from "@/components/signUpForm/signUpForm";
+import SignUpForm from "./signUpForm/signUpForm";
 import Carousel from "@/components/ui/carousel/carousel";
 import Slide from "@/containers/slide/slide";
 import { Link } from "react-router-dom";

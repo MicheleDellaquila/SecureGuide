@@ -1,6 +1,8 @@
+import useWindowSize from "@/hooks/useWindowSize";
+
 // components
 import Container from "@/containers/container/container";
-import Sidebar from "../sidebar/sidebar";
+import Sidebar from "@/layouts/sidebar/sidebar";
 import { Outlet } from "react-router-dom";
 
 // context providers
@@ -11,14 +13,14 @@ import { FocusTextAreaCtxProvider } from "@/context/focusTextAreaCtx/focusTextAr
 import "./homeLayout.scss";
 
 const HomeLayout = () => {
-  
+  const { width } = useWindowSize();
 
   return (
     <div className="HomeLayout">
       <Container className="HomeLayout__container" full>
         <ChatsProvider>
           <FocusTextAreaCtxProvider>
-            <Sidebar />
+            {width > 1023 && <Sidebar />}
             <Outlet />
           </FocusTextAreaCtxProvider>
         </ChatsProvider>
