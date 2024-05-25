@@ -1,27 +1,38 @@
 import "./sidebar.scss";
-import useNewChat from "./hook/useNewChat";
 
 // icons
 import Logo from "@/assets/icons/logo.png";
-import { SquarePen } from "lucide-react";
+import { Menu } from "lucide-react";
 
 // components
-import Chats from "@/components/chats/chats";
+import Chats from "@/layouts/sidebar/chats/chats";
 import UserProfile from "./userProfile/userProfile";
+import useWindowSize from "@/hooks/useWindowSize";
+import AddChat from "@/components/addChat/addChat";
 
-const Sidebar = () => {
-  const { addNewChat } = useNewChat();
+// Sidebar component
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+const Sidebar = ({ onClose }: SidebarProps) => {
+  const { width } = useWindowSize();
 
   return (
     <aside className="Sidebar">
       <div className="Sidebar__header">
-        <div className="Sidebar__box">
-          <img className="Sidebar__logo" src={Logo} alt="lock" />
-          <h4 className="Sidebar__title">Secure Guide</h4>
-        </div>
-        <span className="Sidebar__addIcon">
-          <SquarePen onClick={addNewChat} />
-        </span>
+        {width >= 1024 && (
+          <div className="Sidebar__box">
+            <img className="Sidebar__logo" src={Logo} alt="lock" />
+            <h4 className="Sidebar__title">Secure Guide</h4>
+          </div>
+        )}
+        {width < 1024 && (
+          <span className="Sidebar__sidebarMenu" onClick={onClose}>
+            <Menu />
+          </span>
+        )}
+        <AddChat />
       </div>
       <div className="Sidebar__chats">
         <Chats />

@@ -1,0 +1,29 @@
+.SidebarMenu {
+  display: none;
+
+  @media (max-width: 1023px) {
+    display: block;
+  }
+
+  &__inner {
+    padding: 0.8rem;
+    background-color: var(--grayscale-color-100);
+    border-radius: var(--border-radius-xs);
+
+    &:active {
+      background-color: var(--grayscale-color-200);
+      border-radius: var(--border-radius-xs);
+    }
+  }
+}
+
+.Backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba($color: var(--backdrop-color-rgb), $alpha: 0.15);
+}
+
+.Sidebar__wrapper {
+  display: flex;
+  height: 100%;
+}
