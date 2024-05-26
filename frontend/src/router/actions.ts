@@ -78,26 +78,27 @@ export const resetPasswordAction: ActionFunction = async ({ request }) => {
   }
 };
 
-// update profile action
-export const updateProfileAction: ActionFunction = async ({ request }) => {
+// home action
+export const homeAction: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const user = Object.fromEntries(formData);
+  console.log(user)
 
-  try {
-    // check if user is authenticated
-    const currentUser = auth.currentUser;
-    if (!currentUser) throw new Error("Utente non autenticato");
+  // try {
+  //   // check if user is authenticated
+  //   const currentUser = auth.currentUser;
+  //   if (!currentUser) throw new Error("Utente non autenticato");
 
-    // get user profile reference and update user data
-    const profileRef = await getDocReference("users", currentUser.uid);
-    await updateDoc(profileRef, { fullName: user.fullName, email: user.email });
-    await updateProfile(currentUser, user);
+  //   // get user profile reference and update user data
+  //   const profileRef = await getDocReference("users", currentUser.uid);
+  //   await updateDoc(profileRef, { fullName: user.fullName, email: user.email });
+  //   await updateProfile(currentUser, user);
 
-    localStorage.setItem("user", JSON.stringify(user));
-    toast.success("Il tuo profilo è stato aggiornato con successo!");
-    return redirect("/home");
-  } catch (error: any) {
-    toast.error(error.message);
-    return null;
-  }
+  //   localStorage.setItem("user", JSON.stringify(user));
+  //   toast.success("Il tuo profilo è stato aggiornato con successo!");
+  //   return redirect("/home");
+  // } catch (error: any) {
+  //   toast.error(error.message);
+  //   return null;
+  // }
 };

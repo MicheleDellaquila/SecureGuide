@@ -6,7 +6,7 @@ import Input from "@/components/ui/input/input";
 import Button from "@/components/ui/button/button";
 
 // styles
-import "./updateProfileForm.css";
+import "./updateProfileForm.scss";
 
 // update profile props
 interface UpdateProfileFormProps {

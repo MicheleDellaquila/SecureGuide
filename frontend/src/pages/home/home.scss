@@ -27,16 +27,6 @@
     margin-inline: auto;
   }
 
-  &__addChat {
-    & > .AddChat__icon {
-      color: var(--grayscale-color-500);
-    }
-
-    &:active {
-      background-color: var(--grayscale-color-100);
-    }
-  }
-
   &__box-2 {
     width: 100%;
     padding-inline: 0.8rem;

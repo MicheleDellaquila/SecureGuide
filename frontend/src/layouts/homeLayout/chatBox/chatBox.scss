@@ -1,0 +1,16 @@
+.ChatBox {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: 2.4rem;
+
+  &__text {
+    font-size: 1.2rem;
+    text-align: center;
+    padding-block: 0.8rem;
+  }
+
+  @media (max-width: 767px) {
+    padding: 1.6rem;
+  }
+}

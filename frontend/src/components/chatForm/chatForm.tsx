@@ -1,4 +1,5 @@
 import useFocusTextAreaCtx from "@/context/focusTextAreaCtx/useFocusTextAreaCtx";
+import useResizingTextarea from "./hook/useResizingTextarea";
 
 // components
 import Textarea from "@/components/ui/textarea/textarea";
@@ -17,11 +18,18 @@ interface ChatFormProps {
 
 const ChatForm = ({ isDisable }: ChatFormProps) => {
   const { refTextArea } = useFocusTextAreaCtx();
+  const { adjustHeight } = useResizingTextarea(refTextArea);
 
   return (
     <div className="ChatForm">
       <div className="ChatForm__inner">
-        <Textarea ref={refTextArea} className="ChatForm__textarea" name="message" placeholder="Scrivi a SecureGuide" />
+        <Textarea
+          ref={refTextArea}
+          className="ChatForm__textarea"
+          name="message"
+          placeholder="Scrivi a SecureGuide"
+          onChange={adjustHeight}
+        />
         <Button disabled={isDisable} className="ChatForm__button" size="sm" variant="primary">
           <ArrowUp size={24} />
         </Button>

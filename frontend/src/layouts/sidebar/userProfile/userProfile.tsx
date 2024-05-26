@@ -1,27 +1,37 @@
 import Profile from "@/assets/icons/profile.png";
-import useSignOut from "./hook/useSignOut";
+import useShowModal from "./hooks/useShowModal";
+import useSignOut from "./hooks/useSignOut";
 
 // components
-import { Link } from "react-router-dom";
+import Modal from "@/components/ui/modal/modal";
+import UpdateProfileModal from "./updateProfileModal/updateProfileModal";
 import { LogOut } from "lucide-react";
 
 // styles
 import "./userProfile.scss";
 
 const UserProfile = () => {
+  const { showModal, handleModal } = useShowModal();
   const { logoutUserHandler } = useSignOut();
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   return (
-    <div className="UserProfile">
-      <Link className="UserProfile__profile" to="/home/modifica-profilo">
-        <img className="UserProfile__profile-img" src={Profile} width={32} height={32} alt="profile" />
-        <p className="UserProfile__profile-userName">{user.fullName}</p>
-      </Link>
-      <span className="UserProfile__logout" onClick={logoutUserHandler}>
-        <LogOut size={20} />
-      </span>
-    </div>
+    <>
+      {showModal && (
+        <Modal>
+          <UpdateProfileModal onClose={handleModal} />
+        </Modal>
+      )}
+      <div className="UserProfile">
+        <div className="UserProfile__profile" onClick={handleModal}>
+          <img className="UserProfile__profile-img" src={Profile} width={32} height={32} alt="profile" />
+          <p className="UserProfile__profile-userName">{user.fullName}</p>
+        </div>
+        <span className="UserProfile__logout" onClick={logoutUserHandler}>
+          <LogOut size={20} />
+        </span>
+      </div>
+    </>
   );
 };
 

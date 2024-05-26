@@ -35,7 +35,7 @@ const Sidebar = ({ onClose }: SidebarProps) => {
         <AddChat />
       </div>
       <div className="Sidebar__chats">
-        <Chats />
+        <Chats isMobile={width < 1024} onClose={onClose} />
       </div>
       <div className="Sidebar__footer">
         <UserProfile />

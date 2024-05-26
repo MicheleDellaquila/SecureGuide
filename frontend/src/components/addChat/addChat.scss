@@ -1,9 +1,10 @@
 .AddChat {
   padding: 0.8rem;
+  color: var(--primary-color-600);
   cursor: pointer;
 
   &__icon {
-    color: var(--primary-color-700);
+    color: inherit;
   }
 
   &:hover,

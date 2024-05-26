@@ -1,9 +1,9 @@
 import type { FetcherSubmitFunction } from "react-router-dom";
-import useMessage from "./hook/useMessage";
+import useMessage from "../../layouts/homeLayout/chatBox/hook/useMessage";
 
 // components
-import ChatForm from "./chatForm/chatForm";
-import SidebarMenu from "@/components/sidebarMenu/sidebarMenu";
+import ChatForm from "../../components/chatForm/chatForm";
+import SidebarMenu from "@/layouts/headerMobile/sidebarMenu/sidebarMenu";
 import AddChat from "@/components/addChat/addChat";
 import Form from "@/components/ui/form/form";
 

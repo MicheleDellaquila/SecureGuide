@@ -1,0 +1,32 @@
+.UpdateProfileModal {
+  width: 42rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.4rem;
+
+    &-title {
+      font-size: 2rem;
+      color: var(--grayscale-color-950);
+    }
+
+    &-closeIcon {
+      color: var(--grayscale-color-500);
+      cursor: pointer;
+
+      &:hover {
+        color: var(--grayscale-color-600);
+      }
+    }
+  }
+
+  &__body {
+    padding: 0.8rem;
+  }
+
+  &__form {
+    padding: 1.6rem;
+  }
+}

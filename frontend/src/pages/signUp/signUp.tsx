@@ -21,7 +21,7 @@ export const SignUp = () => {
 
   return (
     <div className="SignUp">
-      <Container className="SignUp__container" full>
+      <Container className="SignUp__container">
         <div className="col-xs-12 col-lg-7 SignIn__col-1">
           <Carousel autoplay>
             <Slide title={slideTitle} text={slideText} img={slideAuth} />

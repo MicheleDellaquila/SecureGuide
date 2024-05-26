@@ -1,0 +1,16 @@
+.HeaderMobile {
+  position: -webkit-sticky;
+  position: sticky;
+  inset-block-start: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.6rem;
+
+  &__addIcon {
+    color: var(--grayscale-color-500);
+
+    &:active {
+      background-color: var(--grayscale-color-100);
+    }
+  }
+}

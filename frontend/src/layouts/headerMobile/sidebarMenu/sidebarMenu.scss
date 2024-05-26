@@ -2,7 +2,8 @@
   display: none;
 
   @media (max-width: 1023px) {
-    display: block;
+    display: flex;
+    align-items: center;
   }
 
   &__inner {
