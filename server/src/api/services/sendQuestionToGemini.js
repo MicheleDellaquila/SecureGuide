@@ -5,9 +5,6 @@ function sendQuestionToGemini(question, historyChat) {
     try {
       const chat = model.startChat({
         historyChat,
-        generationConfig: {
-          maxOutputTokens: 100,
-        },
       });
 
       const result = await chat.sendMessage(question);

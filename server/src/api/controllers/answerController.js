@@ -1,4 +1,4 @@
-const sendQuestionToGemini = require("../services/geminiService");
+const sendQuestionToGemini = require("../services/sendQuestionToGemini");
 
 const getAnswer = async (req, res) => {
   try {

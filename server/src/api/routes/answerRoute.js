@@ -1,8 +1,9 @@
-const { Router } = require('express');
+const { Router } = require("express");
+const answerController = require("../controllers/answerController");
 
 // define the router
 const router = Router();
 
-router.post('/', askQuestion);
+router.post("/", answerController);
 
 module.exports = router;

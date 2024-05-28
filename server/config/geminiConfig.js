@@ -1,7 +1,7 @@
 const { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } = require("@google/generative-ai");
 
 // access to google generative AI API
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // get the generative model
 const model = genAI.getGenerativeModel({
@@ -9,7 +9,7 @@ const model = genAI.getGenerativeModel({
   systemInstruction: {
     parts: [
       {
-        text: "Answer the questions in detail according to the Privacy Knowledge Base and GDPR, depending on the context of the sentence. After giving a short answer, provide examples of implementation according to privacy by design.",
+        text: "Answer the questions thoroughly, referring to the Privacy Knowledge Base and the GDPR guidelines applicable to the specific context presented. Begin with a concise answer that directly addresses the question. After the initial answer, provide practical examples of how “privacy by design” principles can be implemented.",
       },
     ],
     role: "model",
