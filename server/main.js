@@ -3,16 +3,19 @@ const cors = require("cors");
 require("dotenv").config();
 
 // routes
+const answerRoute = require("./src/api/routes/answerRoute");
 
 // create express app
 const app = express();
 
-// set up the cors policy
+// set up the cors policy and the json parser
 app.use(cors());
-
-// api
 app.use(express.json());
 
-app.listen(3001, () => {
+// api
+app.use("/api/v1/answer", answerRoute);
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
   console.log("Server in ascolto sulla porta 3001");
 });
