@@ -1,9 +1,14 @@
 import { redirect, type ActionFunction } from "react-router-dom";
 import {
+  type User,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
   sendPasswordResetEmail,
+  sendEmailVerification,
+  getAuth,
+  verifyBeforeUpdateEmail,
+  signOut,
 } from "firebase/auth";
 import { setDoc, doc, updateDoc } from "firebase/firestore";
 import { auth, firestore } from "@/services/firebase";
@@ -48,8 +53,9 @@ export const signUpAction: ActionFunction = async ({ request }) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     await setDoc(doc(firestore, "users", userCredential.user.uid), { fullName, email });
     await updateProfile(userCredential.user, { displayName: fullName });
+    await sendEmailVerification(getAuth().currentUser as User);
 
-    toast.success("Registrazione avvenuta con successo!");
+    toast.success("Registrazione avvenuta con successo. Controlla la tua email per confermare l'account.");
     return { ok: true };
   } catch (error: any) {
     console.error(error);
@@ -78,27 +84,56 @@ export const resetPasswordAction: ActionFunction = async ({ request }) => {
   }
 };
 
+// update profile action
+const updateProfileAction = async (formData: FormData) => {
+  try {
+    const fullName = formData.get("fullName")?.toString().trim();
+    const email = formData.get("email")?.toString().trim();
+
+    // check if user is authenticated
+    const currentUser = auth.currentUser;
+    if (!currentUser) throw new Error("Utente non autenticato");
+
+    // get user profile reference
+    const profileRef = await getDocReference("users", currentUser.uid);
+
+    // check if fullname is different from the current one
+    if (fullName !== currentUser.displayName && email !== currentUser.email) {
+      await updateDoc(profileRef, { fullName: fullName, email: email });
+      await updateProfile(currentUser, { displayName: fullName });
+      await verifyBeforeUpdateEmail(currentUser, email as string);
+      toast.success("Il tuo profilo è stato aggiornato con successo. Controlla la tua email per confermare l'account.");
+    } else if (fullName !== currentUser.displayName) {
+      await updateDoc(profileRef, { fullName: fullName });
+      await updateProfile(currentUser, { displayName: fullName });
+      toast.success("Il tuo profilo è stato aggiornato con successo!");
+    } else {
+      await updateDoc(profileRef, { email: email });
+      await verifyBeforeUpdateEmail(currentUser, email as string);
+      toast.success("Il tuo profilo è stato aggiornato con successo. Controlla la tua email per confermare l'account.");
+    }
+
+    localStorage.setItem("user", JSON.stringify({ fullName, email }));
+    return { isSuccessful: true };
+  } catch (error: any) {
+    if (error.code === "auth/requires-recent-login") {
+      toast.info("Per favore, effettua nuovamente il login per aggiornare l'email.");
+      await signOut(auth);
+      return redirect("/");
+    }
+
+    toast.error(error.message);
+    return null;
+  }
+};
+
 // home action
 export const homeAction: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
-  const user = Object.fromEntries(formData);
-  console.log(user)
+  const actionType = formData.get("actionType")?.toString();
 
-  // try {
-  //   // check if user is authenticated
-  //   const currentUser = auth.currentUser;
-  //   if (!currentUser) throw new Error("Utente non autenticato");
+  // call update profile action if action type is updateProfile
+  if (actionType === "updateProfile") return updateProfileAction(formData);
 
-  //   // get user profile reference and update user data
-  //   const profileRef = await getDocReference("users", currentUser.uid);
-  //   await updateDoc(profileRef, { fullName: user.fullName, email: user.email });
-  //   await updateProfile(currentUser, user);
-
-  //   localStorage.setItem("user", JSON.stringify(user));
-  //   toast.success("Il tuo profilo è stato aggiornato con successo!");
-  //   return redirect("/home");
-  // } catch (error: any) {
-  //   toast.error(error.message);
-  //   return null;
-  // }
+  return null;
 };

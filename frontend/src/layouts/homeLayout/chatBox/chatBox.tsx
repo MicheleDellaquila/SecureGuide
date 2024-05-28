@@ -8,13 +8,13 @@ import ChatForm from "@/components/chatForm/chatForm";
 import "./chatBox.scss";
 
 const ChatBox = () => {
-  const { message, sendMessage } = useMessage();
+  const { message, setMessage, sendMessage } = useMessage();
   const isBtnDisabled = message === "";
 
   return (
     <div className="ChatBox">
       <Form formValues={{ message }} onSubmitForm={sendMessage}>
-        <ChatForm isDisable={isBtnDisabled} />
+        <ChatForm isDisable={isBtnDisabled} setMessage={setMessage} />
       </Form>
       <p className="ChatBox__text">
         SecureGuide può commettere errori. Considera di verificare le informazioni importanti.

@@ -50,7 +50,7 @@ const Form = forwardRef<HTMLFormElement, PropsWithChildren<FormProps>>(
         <Form
           ref={ref}
           className={className}
-          onSubmit={e => {
+          onSubmit={async e => {
             e.preventDefault();
             e.stopPropagation();
             onSubmit();

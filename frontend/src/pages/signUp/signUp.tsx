@@ -29,7 +29,7 @@ export const SignUp = () => {
             <Slide title={slideTitle3} text={slideText3} img={slideAuth3} />
           </Carousel>
         </div>
-        <div className="col-xs-12 col-md-8 col-lg-5 col-xl-4 SignIn__col-2">
+        <div className="col-xs-12 col-md-8 col-lg-5 SignIn__col-2">
           <div className="SignUp__box">
             <h1 className="SignUp__box-title">Benvenuto!</h1>
             <p className="SignUp__box-text">Crea un account per iniziare a utilizzare l'applicazione.</p>

@@ -12,13 +12,14 @@ import "./chatForm.scss";
 // chat form props
 interface ChatFormProps {
   isDisable: boolean;
+  setMessage: (message: string) => void;
   formState?: string;
   formResult?: any;
 }
 
-const ChatForm = ({ isDisable }: ChatFormProps) => {
+const ChatForm = ({ isDisable, setMessage }: ChatFormProps) => {
   const { refTextArea } = useFocusTextAreaCtx();
-  const { adjustHeight } = useResizingTextarea(refTextArea);
+  useResizingTextarea(refTextArea);
 
   return (
     <div className="ChatForm">
@@ -28,7 +29,7 @@ const ChatForm = ({ isDisable }: ChatFormProps) => {
           className="ChatForm__textarea"
           name="message"
           placeholder="Scrivi a SecureGuide"
-          onChange={adjustHeight}
+          onChange={(e: any) => setMessage(e.target.value)}
         />
         <Button disabled={isDisable} className="ChatForm__button" size="sm" variant="primary">
           <ArrowUp size={24} />

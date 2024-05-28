@@ -7,15 +7,20 @@ import Button from "@/components/ui/button/button";
 
 // styles
 import "./updateProfileForm.scss";
+import useCloseModal from "./hook/useCloseModal";
 
 // update profile props
 interface UpdateProfileFormProps {
   formState?: string;
   errors?: FieldErrors<{ fullName: string; email: string; password: string }>;
+  formResult?: { isSuccessful: boolean } | null;
   onClearErrors?: UseFormClearErrors<{ fullName: string; email: string; password: string }>;
+  onClose: () => void;
 }
 
-const UpdateProfileForm = ({ formState, errors, onClearErrors }: UpdateProfileFormProps) => {
+const UpdateProfileForm = ({ formState, formResult, errors, onClearErrors, onClose }: UpdateProfileFormProps) => {
+  useCloseModal(formResult, onClose);
+
   return (
     <>
       <Field errorMessages={errors?.fullName?.message ?? ""}>

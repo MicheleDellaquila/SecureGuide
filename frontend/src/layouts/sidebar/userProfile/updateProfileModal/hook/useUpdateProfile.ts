@@ -6,8 +6,8 @@ const useUpdateProfile = () => {
 
   // update user
   const updateUser = (data: object, fetcherSubmit: FetcherSubmitFunction) => {
-    console.log(data)
-    fetcherSubmit(data as SubmitTarget, { method: "PATCH", action: "/home" });
+    const dataObj = { ...data, actionType: "updateProfile" };
+    fetcherSubmit(dataObj as SubmitTarget, { method: "PATCH", action: "/home" });
   };
 
   return { user, updateUser };

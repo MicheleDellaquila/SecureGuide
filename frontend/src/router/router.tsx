@@ -6,7 +6,7 @@ import { Root } from "./root";
 import { SignIn } from "@/pages/signIn/signIn";
 import { SignUp } from "@/pages/signUp/signUp";
 import { ProtectedRoute } from "@/components/protectedRoute/protectedRoute";
-import { Home } from "@/pages/home/home";
+// import { Home } from "@/pages/home/home";
 import { Chat } from "@/pages/chat/chat";
 
 // layouts

@@ -27,12 +27,13 @@ const UpdateProfileModal = ({ onClose }: UpdateProfileModalProps) => {
       </div>
       <div className="UpdateProfileModal__body">
         <Form
+          key="updateProfileForm"
           className="UpdateProfileModal__form"
           formValues={user}
           formSchema={updateProfileSchema}
-          onSubmitForm={(data: any) => console.log(data)}
+          onSubmitForm={updateUser}
         >
-          <UpdateProfileForm />
+          <UpdateProfileForm onClose={onClose} />
         </Form>
       </div>
     </div>
