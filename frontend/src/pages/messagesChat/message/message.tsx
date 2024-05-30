@@ -12,7 +12,7 @@ interface MessageProps extends HTMLProps<HTMLDivElement> {
 const Message = ({ text, sender }: MessageProps) => {
   return (
     <li className={clsx("Message", sender === "user" && "Message--user")}>
-      <p>{text}</p>
+      <p className="Message__text">{text}</p>
     </li>
   );
 };

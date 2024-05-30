@@ -4,9 +4,14 @@ import useChats from "./hook/useChats";
 
 // Chats context
 export const ChatsCtx = createContext<Chat[]>([]);
+export const ChatsActionCtx = createContext<(chat: Chat) => void>(() => {});
 
 export const ChatsProvider = ({ children }: PropsWithChildren) => {
-  const { chats } = useChats();
+  const { chats, updateChats } = useChats();
 
-  return <ChatsCtx.Provider value={chats}>{children}</ChatsCtx.Provider>;
+  return (
+    <ChatsActionCtx.Provider value={updateChats}>
+      <ChatsCtx.Provider value={chats}>{children}</ChatsCtx.Provider>
+    </ChatsActionCtx.Provider>
+  );
 };

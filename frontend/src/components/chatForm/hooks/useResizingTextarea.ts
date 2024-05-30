@@ -37,8 +37,6 @@ const useResizingTextarea = (refTextArea: React.MutableRefObject<HTMLTextAreaEle
       refTextArea.current?.removeEventListener("input", adjustHeight);
     };
   }, [adjustHeight]);
-
-  return { adjustHeight };
 };
 
 export default useResizingTextarea;

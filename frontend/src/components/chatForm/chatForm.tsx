@@ -1,4 +1,6 @@
-import useChatForm from "./hooks/useChatForm";
+import useFocusTextAreaCtx from "@/context/focusTextAreaCtx/useFocusTextAreaCtx";
+import useResizingTextarea from "./hooks/useResizingTextarea";
+import { useWatch } from "react-hook-form";
 
 // components
 import Textarea from "@/components/ui/textarea/textarea";
@@ -7,6 +9,7 @@ import { ArrowUp } from "lucide-react";
 
 // styles
 import "./chatForm.scss";
+import useChatForm from "./hooks/useCreateChat";
 
 // chat form props
 interface ChatFormProps {
@@ -15,7 +18,10 @@ interface ChatFormProps {
 }
 
 const ChatForm = ({ formState, formResult }: ChatFormProps) => {
-  const { refTextArea, message } = useChatForm(formResult);
+  const { refTextArea } = useFocusTextAreaCtx();
+  const { message } = useWatch();
+  useChatForm(formResult);
+  useResizingTextarea(refTextArea);
 
   return (
     <div className="ChatForm">

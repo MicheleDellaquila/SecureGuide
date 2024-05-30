@@ -27,7 +27,12 @@ const useChats = () => {
     }
   }, [getChats]);
 
-  return { chats };
+  // add new chat
+  const updateChats = useCallback((chat: Chat) => {
+    return setChats(prevChats => [...prevChats, chat]);
+  }, []);
+
+  return { chats, updateChats };
 };
 
 export default useChats;

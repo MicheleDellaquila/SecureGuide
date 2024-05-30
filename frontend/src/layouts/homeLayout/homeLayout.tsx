@@ -31,7 +31,9 @@ const HomeLayout = () => {
                 {width < 1024 && <HeaderMobile />}
                 <main className="HomeLayout__main">
                   <div className="HomeLayout__content">
-                    <Outlet />
+                    <div className="HomeLayout__wrapper">
+                      <Outlet />
+                    </div>
                   </div>
                   <ChatBox />
                 </main>

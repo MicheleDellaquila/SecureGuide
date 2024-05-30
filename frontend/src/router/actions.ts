@@ -10,11 +10,12 @@ import {
   verifyBeforeUpdateEmail,
   signOut,
 } from "firebase/auth";
-import { setDoc, doc, updateDoc, Timestamp, collection } from "firebase/firestore";
+import { setDoc, doc, updateDoc } from "firebase/firestore";
 import { auth, firestore } from "@/services/firebase";
 import { getDocReference } from "@/services/firebaseQuery";
 import { toast } from "react-toastify";
 import getAnswer from "@/services/apis/getAnswer";
+import createChatFirestore from "@/helpers/createChatFirestore";
 
 /* FOR CORRECT SANITIZATION OF DATA, INSERT OK: TRUE ON EACH ACTION SO THE FORM CAN BE RESET */
 
@@ -145,21 +146,13 @@ export const homeAction: ActionFunction = async ({ request }) => {
     if (!question) throw new Error("Inserisci una domanda");
 
     // get answer from getAnswer API
-    const answer = await getAnswer(question, []);
-    if (!answer) throw new Error("Errore nella risposta");
+    const { title, response } = await getAnswer(question, []);
+    if (!title || !response) throw new Error("Errore nella risposta");
 
     // create chat in firebase
-    const chatRef = doc(collection(firestore, "chats"));
-    const chat = {
-      uid: chatRef.id,
-      question,
-      answer: answer,
-      userID: user.uid,
-      createdAt: Timestamp.now(),
-    };
-    await setDoc(chatRef, chat);
+    const chat = await createChatFirestore(title, [{ question, answer: response }], user.uid);
 
-    return { answer, ok: true };
+    return { answer: response, chat, ok: true };
   } catch (error: any) {
     toast.error(error.message);
     return null;

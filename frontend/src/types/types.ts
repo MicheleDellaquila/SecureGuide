@@ -5,19 +5,19 @@ export type messageSender = "user" | "model";
 
 // interfaces
 export interface Chat {
-  documentId: string;
+  uid: string;
   title: string;
-  timestamps: Timestamp;
-  userId: string;
+  messages: Messages[];
+  userID: string;
+  createdAt: Timestamp;
 }
 
 export interface Messages {
   text: string;
-  answer?: string;
   sender: messageSender;
 }
 
-export interface HistoryChat {
-  text: string;
-  sender: messageSender;
+export interface MessagesDB {
+  question: string;
+  answer: string;
 }

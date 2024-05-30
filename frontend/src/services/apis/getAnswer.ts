@@ -1,8 +1,8 @@
 import { axiosInstance } from "../axios";
-import type { HistoryChat } from "@/types/types";
-import clearGeminiResponse from "@/helpers/clearGeminiResponse";
+import type { Messages } from "@/types/types";
+import formatGeminiResponse from "@/helpers/formatGeminiResponse";
 
-const getAnswer = async (question: string, historyChat: HistoryChat[] | []) => {
+const getAnswer = async (question: string, historyChat: Messages[] | []) => {
   try {
     const response = await axiosInstance("/api/v1/answer/", {
       method: "POST",
@@ -15,7 +15,7 @@ const getAnswer = async (question: string, historyChat: HistoryChat[] | []) => {
     // check if response is successful
     if (response.status !== 200 && !response.data) throw new Error("Errore nella generazione della risposta");
 
-    return clearGeminiResponse(response.data.answer);
+    return formatGeminiResponse(response.data.answer);
   } catch (error) {
     throw error;
   }

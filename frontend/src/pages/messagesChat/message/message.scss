@@ -12,4 +12,8 @@
     margin-inline-start: auto;
     background-color: var(--grayscale-color-100);
   }
+
+  &__text {
+    color: var(--grayscale-color-800);
+  }
 }

@@ -1,6 +1,7 @@
 .Sidebar {
   display: flex;
   flex-direction: column;
+  max-width: 32rem;
   background-color: var(--primary-color-200);
 
   &__header {

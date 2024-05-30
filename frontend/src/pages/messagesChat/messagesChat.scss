@@ -1,7 +1,9 @@
 .MessagesChat {
   width: 100%;
   max-width: 72rem;
+  height: 100%;
   margin-inline: auto;
+  overflow-y: scroll;
 
   &__list {
     display: flex;
