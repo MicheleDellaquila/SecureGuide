@@ -9,7 +9,7 @@ interface FormProps extends FetcherFormProps {
   className?: string;
   formValues: object;
   formSchema?: ZodSchema<object>;
-  onSubmitForm: (data: object, fetcherSubmit: FetcherSubmitFunction) => void;
+  onSubmitForm: (data: any, fetcherSubmit: FetcherSubmitFunction) => void;
 }
 
 const Form = forwardRef<HTMLFormElement, PropsWithChildren<FormProps>>(

@@ -2,6 +2,7 @@ import "./textarea.scss";
 import clsx from "clsx";
 import { forwardRef, type HTMLProps } from "react";
 import { useFormContext } from "react-hook-form";
+import getInputRef from "@/utils/getInputRef";
 
 // textare props
 interface TextareaProps extends HTMLProps<HTMLTextAreaElement> {
@@ -17,8 +18,8 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <textarea
+        ref={refEl => getInputRef(ref, refEl as HTMLTextAreaElement, refInput)}
         className={clsx("Textare", className)}
-        ref={ref}
         placeholder={placeholder}
         {...rest}
         {...props}

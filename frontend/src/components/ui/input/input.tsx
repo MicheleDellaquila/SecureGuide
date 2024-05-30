@@ -18,7 +18,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ className, type, place
 
   return (
     <input
-      ref={refEl => getInputRef(ref, refEl, refInput)}
+      ref={refEl => getInputRef(ref, refEl as HTMLInputElement, refInput)}
       className={clsx("Input", className)}
       type={type}
       placeholder={placeholder}

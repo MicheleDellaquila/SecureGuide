@@ -10,10 +10,11 @@ import {
   verifyBeforeUpdateEmail,
   signOut,
 } from "firebase/auth";
-import { setDoc, doc, updateDoc } from "firebase/firestore";
+import { setDoc, doc, updateDoc, Timestamp, collection } from "firebase/firestore";
 import { auth, firestore } from "@/services/firebase";
 import { getDocReference } from "@/services/firebaseQuery";
 import { toast } from "react-toastify";
+import getAnswer from "@/services/apis/getAnswer";
 
 /* FOR CORRECT SANITIZATION OF DATA, INSERT OK: TRUE ON EACH ACTION SO THE FORM CAN BE RESET */
 
@@ -135,5 +136,32 @@ export const homeAction: ActionFunction = async ({ request }) => {
   // call update profile action if action type is updateProfile
   if (actionType === "updateProfile") return updateProfileAction(formData);
 
-  return null;
+  try {
+    const user = JSON.parse(localStorage.getItem("user") as string);
+    if (!user) throw new Error("Utente non autenticato");
+
+    // get question from form data
+    const question = formData.get("message")?.toString().trim();
+    if (!question) throw new Error("Inserisci una domanda");
+
+    // get answer from getAnswer API
+    const answer = await getAnswer(question, []);
+    if (!answer) throw new Error("Errore nella risposta");
+
+    // create chat in firebase
+    const chatRef = doc(collection(firestore, "chats"));
+    const chat = {
+      uid: chatRef.id,
+      question,
+      answer: answer,
+      userID: user.uid,
+      createdAt: Timestamp.now(),
+    };
+    await setDoc(chatRef, chat);
+
+    return { answer, ok: true };
+  } catch (error: any) {
+    toast.error(error.message);
+    return null;
+  }
 };

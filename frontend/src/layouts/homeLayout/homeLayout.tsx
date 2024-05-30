@@ -10,6 +10,7 @@ import { Outlet } from "react-router-dom";
 
 // context providers
 import { ChatsProvider } from "@/context/chatsCtx/chatsCtx";
+import { MessagesProvider } from "@/context/messagesCtx/messagesCtx";
 import { FocusTextAreaCtxProvider } from "@/context/focusTextAreaCtx/focusTextAreaCtx";
 
 // styles
@@ -22,19 +23,21 @@ const HomeLayout = () => {
     <div className="HomeLayout">
       <Container className="HomeLayout__container" full>
         <ChatsProvider>
-          <FocusTextAreaCtxProvider>
-            {width > 1023 && <Sidebar />}
-            <div className="HomeLayout__box">
-              {width > 1023 && <Header />}
-              {width < 1024 && <HeaderMobile />}
-              <main className="HomeLayout__main">
-                <div className="HomeLayout__content">
-                  <Outlet />
-                </div>
-                <ChatBox />
-              </main>
-            </div>
-          </FocusTextAreaCtxProvider>
+          <MessagesProvider>
+            <FocusTextAreaCtxProvider>
+              {width > 1023 && <Sidebar width={width} />}
+              <div className="HomeLayout__box">
+                {width > 1023 && <Header />}
+                {width < 1024 && <HeaderMobile />}
+                <main className="HomeLayout__main">
+                  <div className="HomeLayout__content">
+                    <Outlet />
+                  </div>
+                  <ChatBox />
+                </main>
+              </div>
+            </FocusTextAreaCtxProvider>
+          </MessagesProvider>
         </ChatsProvider>
       </Container>
     </div>

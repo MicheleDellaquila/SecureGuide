@@ -1,29 +1,25 @@
 import "./sidebar.scss";
 
-// icons
-import Logo from "@/assets/icons/logo.png";
-import { Menu } from "lucide-react";
-
 // components
+import Logo from "@/components/ui/logo/logo";
+import { Menu } from "lucide-react";
 import Chats from "@/layouts/sidebar/chats/chats";
 import UserProfile from "./userProfile/userProfile";
-import useWindowSize from "@/hooks/useWindowSize";
 import AddChat from "@/components/addChat/addChat";
 
 // Sidebar component
 interface SidebarProps {
+  width: number;
   onClose?: () => void;
 }
 
-const Sidebar = ({ onClose }: SidebarProps) => {
-  const { width } = useWindowSize();
-
+const Sidebar = ({ width, onClose }: SidebarProps) => {
   return (
     <aside className="Sidebar">
       <div className="Sidebar__header">
         {width >= 1024 && (
           <div className="Sidebar__box">
-            <img className="Sidebar__logo" src={Logo} alt="lock" />
+            <Logo width={48} height={48} />
             <h4 className="Sidebar__title">Secure Guide</h4>
           </div>
         )}
