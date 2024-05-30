@@ -18,9 +18,9 @@ const useAutoLogin = () => {
         try {
           const { uid } = (user as any).toJSON();
           const userInfo = await getUser(uid);
-          localStorage.setItem("user", JSON.stringify({ ...userInfo }));
+          localStorage.setItem("user", JSON.stringify({ ...userInfo, uid }));
           setLoader(false);
-          navigate("/home")
+          navigate("/home");
         } catch (error: any) {
           setLoader(false);
           toast.error(error.message);

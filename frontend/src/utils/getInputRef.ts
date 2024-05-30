@@ -2,8 +2,8 @@ import type { ForwardedRef } from "react";
 import type { RefCallBack } from "react-hook-form";
 
 const getInputRef = (
-  refInput: ForwardedRef<HTMLInputElement>,
-  refEl: HTMLInputElement | null,
+  refInput: ForwardedRef<any>,
+  refEl: HTMLInputElement | HTMLTextAreaElement,
   refRegister: RefCallBack,
 ) => {
   refRegister(refEl);

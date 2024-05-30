@@ -5,7 +5,7 @@ const useSignIn = () => {
   const user = { email: "", password: "" };
 
   // login user into the app
-  const loginUser = (data: object, fetcherSubmit: FetcherSubmitFunction) => {
+  const loginUser = (data: any, fetcherSubmit: FetcherSubmitFunction) => {
     fetcherSubmit(data as SubmitTarget, { method: "post", action: "/?index" });
   };
 

@@ -5,7 +5,7 @@ const useSignIn = () => {
   const user = { fullName: "", email: "", password: "" };
 
   // register user into the app
-  const signUpUser = (data: object, fetcherSubmit: FetcherSubmitFunction) => {
+  const signUpUser = (data: any, fetcherSubmit: FetcherSubmitFunction) => {
     fetcherSubmit(data as SubmitTarget, { method: "post", action: "/signUp" });
   };
 
