@@ -1,5 +1,7 @@
-import "./chat.css";
+import "./chat.scss";
 import type { Timestamp } from "firebase/firestore";
+import moment from "moment";
+moment.locale("it");
 
 // Chat props
 interface ChatProps {
@@ -11,7 +13,7 @@ const Chat = ({ title, timestamps }: ChatProps) => {
   return (
     <div className="Chat">
       <h5 className="Chat__title">{title}</h5>
-      <p className="Chat__date">{timestamps.toDate().toISOString()}</p>
+      <p className="Chat__date">{moment(timestamps.toDate()).format("ll").toString()}</p>
     </div>
   );
 };

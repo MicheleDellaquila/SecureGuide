@@ -1,0 +1,24 @@
+.Chat {
+  padding: 0.8rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+
+  &__title {
+    font-family: var(--font-family);
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 150%;
+    -webkit-margin-after: 0.4rem;
+    margin-block-end: 0.4rem;
+  }
+
+  &__date {
+    font-family: var(--font-family);
+    font-size: 1.2rem;
+  }
+
+  &:hover,
+  &:active {
+    background-color: rgba(187, 180, 254, 0.5);
+  }
+}

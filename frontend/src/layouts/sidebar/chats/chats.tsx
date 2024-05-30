@@ -1,5 +1,5 @@
 import "./chats.scss";
-import useChatsCtx from "@/context/chatsCtx/useChatsCtx";
+import { useChatsCtx } from "@/context/chatsCtx/useChatsCtx";
 
 // components
 import Chat from "./chat/chat";
@@ -12,7 +12,7 @@ interface ChatsProps {
 }
 
 const Chats = ({ isMobile, onClose }: ChatsProps) => {
-  const chats = useChatsCtx();
+  const { chats } = useChatsCtx();
 
   // check if there are no chats
   if (chats.length === 0) return <ChatsNotFound isMobile={isMobile} onClose={onClose} />;
@@ -20,7 +20,7 @@ const Chats = ({ isMobile, onClose }: ChatsProps) => {
   return (
     <ul className="Chats">
       {chats.map(chat => (
-        <Chat key={chat.documentId} title={chat.title} timestamps={chat.timestamps} />
+        <Chat key={chat.uid} title={chat.title} timestamps={chat.createdAt} />
       ))}
     </ul>
   );
