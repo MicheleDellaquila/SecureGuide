@@ -9,7 +9,7 @@ const model = genAI.getGenerativeModel({
   systemInstruction: {
     parts: [
       {
-        text: "Answer the questions thoroughly, referring to the Privacy Knowledge Base and the GDPR guidelines applicable to the specific context presented. Begin with a concise answer that directly addresses the question. After the initial answer, provide practical examples of how “privacy by design” principles can be implemented.",
+        text: "Provide a title according to the user's question and answer the questions thoroughly, referring to the Privacy Knowledge Base and GDPR guidelines applicable to the specific context presented. Begin with a concise answer that directly addresses the question. After the initial answer, provide practical examples of how the principles of “privacy by design” can be implemented.",
       },
     ],
     role: "model",
