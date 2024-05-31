@@ -1,0 +1,52 @@
+.Message {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.8rem 1.6rem;
+  -webkit-border-after: 0.8rem;
+  border-block-end: 0.8rem;
+  border-radius: var(--border-radius-md);
+
+  &--user {
+    -webkit-margin-start: auto;
+    margin-inline-start: auto;
+    background-color: var(--grayscale-color-100);
+  }
+
+  &--model {
+    display: flex;
+    align-items: flex-start;
+    column-gap: 1.2rem;
+  }
+
+  &__logo {
+    border: 1px solid var(--grayscale-color-200);
+    border-radius: 50%;
+  }
+
+  &__text {
+    color: var(--grayscale-color-800);
+  }
+
+  &__prose {
+    & > p {
+      font-size: 1.6rem;
+      color: var(--grayscale-color-950);
+      -webkit-margin-after: 1.6rem;
+      margin-block-end: 1.6rem;
+    }
+
+    & > ul,
+    & > ol {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.8rem;
+      list-style-type: decimal;
+      -webkit-margin-after: 1.6rem;
+      margin-block-end: 1.6rem;
+      -webkit-padding-start: 2.4rem;
+      padding-inline-start: 2.4rem;
+      font-size: 1.6rem;
+    }
+  }
+}

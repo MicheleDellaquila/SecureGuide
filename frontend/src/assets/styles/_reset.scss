@@ -66,6 +66,7 @@ img {
 
 :is(ul, ol) {
   list-style: none;
+  font-family: var(--font-family);
 }
 
 /* Remove default appearance based on browser */
