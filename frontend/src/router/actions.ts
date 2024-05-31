@@ -97,7 +97,7 @@ const updateProfileAction = async (formData: FormData) => {
     if (!currentUser) throw new Error("Utente non autenticato");
 
     // get user profile reference
-    const profileRef = await getDocReference("users", currentUser.uid);
+    const profileRef = getDocReference("users", currentUser.uid);
 
     // check if fullname is different from the current one
     if (fullName !== currentUser.displayName && email !== currentUser.email) {
@@ -141,18 +141,19 @@ export const homeAction: ActionFunction = async ({ request }) => {
     const user = JSON.parse(localStorage.getItem("user") as string);
     if (!user) throw new Error("Utente non autenticato");
 
-    // get question from form data
+    // get question from form data and history chat
     const question = formData.get("message")?.toString().trim();
+    const historyChat = new Array(formData.get("historyChat"));
     if (!question) throw new Error("Inserisci una domanda");
 
     // get answer from getAnswer API
-    const { title, response } = await getAnswer(question, []);
-    if (!title || !response) throw new Error("Errore nella risposta");
+    const { title, html } = await getAnswer(question, historyChat.length > 0 ? historyChat : []);
+    if (!title || !html) throw new Error("Errore nella risposta");
 
     // create chat in firebase
-    const chat = await createChatFirestore(title, [{ question, answer: response }], user.uid);
+    const chat = await createChatFirestore(title, [{ question, answer: html }], user.uid);
 
-    return { answer: response, chat, ok: true };
+    return { answer: html, chat, ok: true };
   } catch (error: any) {
     toast.error(error.message);
     return null;

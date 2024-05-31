@@ -1,19 +1,47 @@
-import { useState, useRef, useEffect, useCallback } from "react";
-import type { Chat } from "@/types/types";
+import { useRef, useEffect, useCallback, useReducer } from "react";
+import type { Chat, ChatsCtxAction, ChatsCtxState } from "@/types/types";
 import { collection } from "firebase/firestore";
 import { getDocsData } from "@/services/firebaseQuery";
 import { firestore } from "@/services/firebase";
 import { toast } from "react-toastify";
 
+// chat reducer
+const chatReducer = (state: ChatsCtxState, action: ChatsCtxAction): ChatsCtxState => {
+  switch (action.type) {
+    case "INITIALIZE_CHATS": {
+      return { ...state, chats: [...action.payload] };
+    }
+
+    case "ADD_CHAT": {
+      const copyChats = [...state.chats];
+      const updateChats = [...copyChats, action.payload];
+      return { ...state, chats: [...updateChats] };
+    }
+
+    case "SELECT_CHAT": {
+      return { ...state, chatSelected: action.payload };
+    }
+
+    default:
+      return state;
+  }
+};
+
+// initial state
+const initialState: ChatsCtxState = {
+  chats: [],
+  chatSelected: null,
+};
+
 const useChats = () => {
-  const [chats, setChats] = useState<Chat[]>([]);
+  const [state, dispatch] = useReducer(chatReducer, initialState);
   const initialRender = useRef(false);
 
   // get all chats
   const getChats = useCallback(async () => {
     try {
       const chatsData = await getDocsData<Chat>(collection(firestore, "chats"));
-      setChats([...chatsData]);
+      dispatch({ type: "INITIALIZE_CHATS", payload: chatsData });
     } catch (error: any) {
       console.error(error);
       toast.error(error.message);
@@ -27,12 +55,7 @@ const useChats = () => {
     }
   }, [getChats]);
 
-  // add new chat
-  const updateChats = useCallback((chat: Chat) => {
-    return setChats(prevChats => [...prevChats, chat]);
-  }, []);
-
-  return { chats, updateChats };
+  return { state, dispatch };
 };
 
 export default useChats;
