@@ -4,7 +4,7 @@ import { useChatsActionCtx } from "@/context/chatsCtx/useChatsCtx";
 import { useNavigate } from "react-router-dom";
 
 const useCreateChat = (formResult: any) => {
-  const { addMessage } = useMessagesActionCtx();
+  const { dispatch } = useMessagesActionCtx();
   const { updateChats } = useChatsActionCtx();
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ const useCreateChat = (formResult: any) => {
     if (!formResult) return;
 
     // update messages and chats
-    addMessage(formResult.answer, "model");
+    dispatch({ type: "ADD_MESSAGE", payload: { text: formResult.answer, sender: "model" } });
     updateChats(formResult.chat);
 
     // navigate to chat

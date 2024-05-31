@@ -4,11 +4,11 @@ import { useMessagesActionCtx } from "@/context/messagesCtx/useMessagesCtx";
 
 const useMessage = () => {
   const message = "";
-  const { addMessage } = useMessagesActionCtx();
+  const { dispatch } = useMessagesActionCtx();
 
   // send message action
   const sendMessage = (data: any, fetcherSubmit: FetcherSubmitFunction) => {
-    addMessage(data.message, "user");
+    dispatch({ type: "ADD_MESSAGE", payload: { text: data.message, sender: "user" } });
     fetcherSubmit({ ...data, actionType: "getAnswer" } as SubmitTarget, { method: "post", action: "/home" });
   };
 
