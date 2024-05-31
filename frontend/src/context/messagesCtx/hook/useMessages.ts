@@ -1,15 +1,33 @@
-import { useCallback, useState } from "react";
-import { Messages, type messageSender } from "@/types/types";
+import { useReducer } from "react";
+import type { MessagesCtxsState, MessagesCtxAction } from "@/types/types";
+
+// messages reducer
+const messagesReducer = (state: MessagesCtxsState, action: MessagesCtxAction): MessagesCtxsState => {
+  switch (action.type) {
+    case "ADD_MESSAGE": {
+      const copyMessages = [...state.messages];
+      const updatedMessages = [...copyMessages, action.payload];
+
+      return { ...state, messages: updatedMessages };
+    }
+
+    case "RESET_MESSAGES":
+      return { ...state, messages: [] };
+
+    default:
+      return state;
+  }
+};
+
+// initial state
+const initialState: MessagesCtxsState = {
+  messages: [],
+};
 
 const useMessages = () => {
-  const [messages, setMessages] = useState<Messages[]>([]);
+  const [state, dispatch] = useReducer(messagesReducer, initialState);
 
-  // add message
-  const addMessage = useCallback((message: string, sender: messageSender) => {
-    setMessages(prevMessages => [...prevMessages, { text: message, sender }]);
-  }, []);
-
-  return { messages, addMessage };
+  return { state, dispatch };
 };
 
 export default useMessages;

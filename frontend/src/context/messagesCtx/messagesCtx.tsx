@@ -1,17 +1,17 @@
-import { createContext, type PropsWithChildren } from "react";
-import type { Messages, messageSender } from "@/types/types";
+import { createContext, type Dispatch, type PropsWithChildren } from "react";
+import type { MessagesCtxAction, MessagesCtxsState } from "@/types/types";
 import useMessages from "./hook/useMessages";
 
 // messages context
-export const MessagesCtx = createContext<Messages[]>([]);
-export const MessagesActionCtx = createContext<(message: string, sender: messageSender) => void>(() => {});
+export const MessagesCtx = createContext<MessagesCtxsState>({ messages: [] });
+export const MessagesActionCtx = createContext<Dispatch<MessagesCtxAction>>(() => {});
 
 export const MessagesProvider = ({ children }: PropsWithChildren) => {
-  const { messages, addMessage } = useMessages();
+  const { state, dispatch } = useMessages();
 
   return (
-    <MessagesActionCtx.Provider value={addMessage}>
-      <MessagesCtx.Provider value={messages}>{children}</MessagesCtx.Provider>
+    <MessagesActionCtx.Provider value={dispatch}>
+      <MessagesCtx.Provider value={state}>{children}</MessagesCtx.Provider>
     </MessagesActionCtx.Provider>
   );
 };
