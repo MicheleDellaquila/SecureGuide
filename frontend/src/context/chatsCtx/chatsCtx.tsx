@@ -1,17 +1,17 @@
-import { createContext, type PropsWithChildren } from "react";
-import type { Chat } from "@/types/types";
+import { createContext, type Dispatch, type PropsWithChildren } from "react";
+import type { ChatsCtxAction, ChatsCtxState } from "@/types/types";
 import useChats from "./hook/useChats";
 
 // Chats context
-export const ChatsCtx = createContext<Chat[]>([]);
-export const ChatsActionCtx = createContext<(chat: Chat) => void>(() => {});
+export const ChatsCtx = createContext<ChatsCtxState>({ chats: [] });
+export const ChatsActionCtx = createContext<Dispatch<ChatsCtxAction>>(() => {});
 
 export const ChatsProvider = ({ children }: PropsWithChildren) => {
-  const { chats, updateChats } = useChats();
+  const { state, dispatch } = useChats();
 
   return (
-    <ChatsActionCtx.Provider value={updateChats}>
-      <ChatsCtx.Provider value={chats}>{children}</ChatsCtx.Provider>
+    <ChatsActionCtx.Provider value={dispatch}>
+      <ChatsCtx.Provider value={state}>{children}</ChatsCtx.Provider>
     </ChatsActionCtx.Provider>
   );
 };

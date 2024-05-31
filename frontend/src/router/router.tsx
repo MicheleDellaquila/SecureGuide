@@ -6,7 +6,7 @@ import { Root } from "./root";
 import { SignIn } from "@/pages/signIn/signIn";
 import { SignUp } from "@/pages/signUp/signUp";
 import { ProtectedRoute } from "@/components/protectedRoute/protectedRoute";
-import { MessagesChat } from "@/pages/messagesChat/messagesChat";
+import { ChatMessages } from "@/pages/chatMessages/chatMessages";
 
 // layouts
 import HomeLayout from "@/layouts/homeLayout/homeLayout";
@@ -17,8 +17,8 @@ export const router = createBrowserRouter(
       <Route index={true} action={loginAction} element={<SignIn />} />
       <Route path="/signUp" action={signUpAction} element={<SignUp />} />
       <Route path="/home" action={homeAction} element={<ProtectedRoute element={<HomeLayout />} />}>
-        <Route index={true} element={<MessagesChat />} />
-        <Route path=":chatId" element={<MessagesChat />} />
+        <Route index={true} element={<ChatMessages />} />
+        <Route path="chat/:chatId" element={<ChatMessages />} />
       </Route>
     </Route>,
   ),

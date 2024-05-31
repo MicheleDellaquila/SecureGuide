@@ -12,16 +12,20 @@ interface ChatsProps {
 }
 
 const Chats = ({ isMobile, onClose }: ChatsProps) => {
-  const { chats } = useChatsCtx();
+  const { chats, chatSelected } = useChatsCtx();
 
   // check if there are no chats
   if (chats.length === 0) return <ChatsNotFound isMobile={isMobile} onClose={onClose} />;
 
   return (
     <ul className="Chats">
-      {chats.map(chat => (
-        <Chat key={chat.uid} title={chat.title} timestamps={chat.createdAt} />
-      ))}
+      {chats.map(chat => {
+        const isSelected = chatSelected === chat.uid;
+
+        return (
+          <Chat key={chat.uid} uid={chat.uid} title={chat.title} timestamps={chat.createdAt} isSelected={isSelected} />
+        );
+      })}
     </ul>
   );
 };

@@ -4,11 +4,14 @@ import type { MessagesCtxsState, MessagesCtxAction } from "@/types/types";
 // messages reducer
 const messagesReducer = (state: MessagesCtxsState, action: MessagesCtxAction): MessagesCtxsState => {
   switch (action.type) {
+    case "INITIALIZE_MESSAGES":
+      return { ...state, messages: [...action.payload] };
+
     case "ADD_MESSAGE": {
       const copyMessages = [...state.messages];
       const updatedMessages = [...copyMessages, action.payload];
 
-      return { ...state, messages: updatedMessages };
+      return { ...state, messages: [...updatedMessages] };
     }
 
     case "RESET_MESSAGES":

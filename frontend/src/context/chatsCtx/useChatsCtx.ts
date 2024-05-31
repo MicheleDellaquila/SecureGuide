@@ -3,20 +3,20 @@ import { ChatsCtx, ChatsActionCtx } from "./chatsCtx";
 
 // use chats action
 export const useChatsActionCtx = () => {
-  const updateChats = useContext(ChatsActionCtx);
+  const dispatch = useContext(ChatsActionCtx);
 
   // check if the context is undefined
-  if (updateChats === undefined) throw new Error("useChatsActionCtx must be used within a ChatsProvider");
+  if (dispatch === undefined) throw new Error("useChatsActionCtx must be used within a ChatsProvider");
 
-  return { updateChats };
+  return { dispatch };
 };
 
 // useChatsCtx
 export const useChatsCtx = () => {
-  const chats = useContext(ChatsCtx);
+  const { chats, chatSelected } = useContext(ChatsCtx);
 
   // check if the context is undefined
   if (chats === undefined) throw new Error("useChatsCtx must be used within a ChatsProvider");
 
-  return { chats };
+  return { chats, chatSelected };
 };

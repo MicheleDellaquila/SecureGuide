@@ -20,13 +20,19 @@ interface ChatFormProps {
 const ChatForm = ({ formState, formResult }: ChatFormProps) => {
   const { refTextArea } = useFocusTextAreaCtx();
   const { message } = useWatch();
-  useChatForm(formResult);
+  const { blockTextArea } = useChatForm(formResult);
   useResizingTextarea(refTextArea);
 
   return (
     <div className="ChatForm">
       <div className="ChatForm__inner">
-        <Textarea ref={refTextArea} className="ChatForm__textarea" name="message" placeholder="Scrivi a SecureGuide" />
+        <Textarea
+          ref={refTextArea}
+          className="ChatForm__textarea"
+          name="message"
+          placeholder="Scrivi a SecureGuide"
+          onKeyDown={blockTextArea}
+        />
         <Button
           disabled={!message || formState === "submitting"}
           className="ChatForm__button"

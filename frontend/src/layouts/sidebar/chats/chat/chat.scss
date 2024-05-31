@@ -3,6 +3,10 @@
   border-radius: var(--border-radius-sm);
   cursor: pointer;
 
+  &--selected {
+    background-color: rgba(var(--chat-bg-color), 0.5);
+  }
+
   &__title {
     font-family: var(--font-family);
     font-size: 1.6rem;
@@ -19,6 +23,6 @@
 
   &:hover,
   &:active {
-    background-color: rgba(187, 180, 254, 0.5);
+    background-color: rgba(var(--chat-bg-color), 0.5);
   }
 }

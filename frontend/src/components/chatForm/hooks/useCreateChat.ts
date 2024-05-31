@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const useCreateChat = (formResult: any) => {
   const { dispatch } = useMessagesActionCtx();
-  const { updateChats } = useChatsActionCtx();
+  const { dispatch: chatsDispatch } = useChatsActionCtx();
   const navigate = useNavigate();
 
   // create chat if form return a result
@@ -14,13 +14,20 @@ const useCreateChat = (formResult: any) => {
 
     // update messages and chats
     dispatch({ type: "ADD_MESSAGE", payload: { text: formResult.answer, sender: "model" } });
-    updateChats(formResult.chat);
+    chatsDispatch(formResult.chat);
 
     // navigate to chat
-    navigate(`/home/${formResult.chat.id}`);
+    navigate(`/home/chat/${formResult.chat.id}`);
   }, [formResult]);
 
-  return;
+  // block textarea behavior
+  const blockTextArea = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
+  };
+
+  return { blockTextArea };
 };
 
 export default useCreateChat;
