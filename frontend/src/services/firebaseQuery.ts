@@ -9,6 +9,7 @@ import {
   query,
   getDocs,
   setDoc,
+  updateDoc,
 } from "firebase/firestore";
 
 export const getUser = async (userId: string) => {
@@ -21,11 +22,24 @@ export const getUser = async (userId: string) => {
   }
 };
 
-export const getDocReference = async (collectionName: string, docUid?: string) => {
+export const getDocReference = (collectionName: string, docUid?: string) => {
   try {
     const documentUid = docUid || "";
     const resourceRef = doc(firestore, collectionName, documentUid);
     return resourceRef;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getDocData = async (docRef: DocumentReference) => {
+  try {
+    const docSnap = await getDoc(docRef);
+
+    // check if the document exists
+    if (!docSnap.exists()) throw new Error("Non è stato possibile trovare il documento richiesto");
+
+    return docSnap.data();
   } catch (error) {
     throw error;
   }
@@ -54,5 +68,15 @@ export const saveData = async (docRef: DocumentReference<DocumentData, DocumentD
     await setDoc(docRef, data);
   } catch (error) {
     throw error;
+  }
+};
+
+export const updateResource = async (collectionName: string, resourceId: string, updateData: { [x: string]: any }) => {
+  try {
+    const resourceRef = doc(firestore, collectionName, resourceId);
+    await updateDoc(resourceRef, { ...updateData });
+  } catch (error) {
+    console.error(error);
+    throw new Error("Errore di aggiornamento della chat");
   }
 };
