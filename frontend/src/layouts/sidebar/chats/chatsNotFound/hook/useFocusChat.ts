@@ -1,11 +1,11 @@
 import useFocusTextAreaCtxAction from "@/context/focusTextAreaCtx/useFocusTextAreaCtxAction";
 
-const useFocusChat = (isMobile: boolean, onClose?: () => void) => {
+const useFocusChat = (isMobile: boolean, onCloseSidebar?: () => void) => {
   const { focusTextArea } = useFocusTextAreaCtxAction();
 
   // focus chat
   const focusChat = () => {
-    if (isMobile) onClose?.();
+    if (isMobile) onCloseSidebar?.();
     focusTextArea();
   };
 

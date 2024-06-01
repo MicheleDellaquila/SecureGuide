@@ -1,4 +1,5 @@
 import "./sidebar.scss";
+import useWindowSize from "@/hooks/useWindowSize";
 
 // components
 import Logo from "@/components/ui/logo/logo";
@@ -9,11 +10,13 @@ import AddChat from "@/components/addChat/addChat";
 
 // Sidebar component
 interface SidebarProps {
-  width: number;
+
   onClose?: () => void;
 }
 
-const Sidebar = ({ width, onClose }: SidebarProps) => {
+const Sidebar = ({ onClose }: SidebarProps) => {
+  const { width } = useWindowSize();
+
   return (
     <aside className="Sidebar">
       <div className="Sidebar__header">
@@ -31,7 +34,7 @@ const Sidebar = ({ width, onClose }: SidebarProps) => {
         <AddChat />
       </div>
       <div className="Sidebar__chats">
-        <Chats isMobile={width < 1024} onClose={onClose} />
+        <Chats isMobile={width < 1024} onCloseSidebar={onClose} />
       </div>
       <div className="Sidebar__footer">
         <UserProfile />

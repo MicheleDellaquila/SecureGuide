@@ -10,11 +10,11 @@ import "./chatsNotFound.scss";
 // ChatsNotFound props
 interface ChatsNotFoundProps {
   isMobile: boolean;
-  onClose?: () => void;
+  onCloseSidebar?: () => void;
 }
 
-const ChatsNotFound = ({ isMobile, onClose }: ChatsNotFoundProps) => {
-  const { focusChat } = useFocusChat(isMobile, onClose);
+const ChatsNotFound = ({ isMobile, onCloseSidebar }: ChatsNotFoundProps) => {
+  const { focusChat } = useFocusChat(isMobile, onCloseSidebar);
 
   return (
     <div className="ChatsNotFound">

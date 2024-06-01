@@ -25,7 +25,7 @@ const HomeLayout = () => {
         <ChatsProvider>
           <MessagesProvider>
             <FocusTextAreaCtxProvider>
-              {width > 1023 && <Sidebar width={width} />}
+              {width > 1023 && <Sidebar />}
               <div className="HomeLayout__box">
                 {width > 1023 && <Header />}
                 {width < 1024 && <HeaderMobile />}
