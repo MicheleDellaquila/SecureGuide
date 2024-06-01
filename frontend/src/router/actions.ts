@@ -12,10 +12,11 @@ import {
 } from "firebase/auth";
 import { setDoc, doc, updateDoc } from "firebase/firestore";
 import { auth, firestore } from "@/services/firebase";
-import { getDocReference } from "@/services/firebaseQuery";
+import { getDocData, getDocReference, updateResource } from "@/services/firebaseQuery";
 import { toast } from "react-toastify";
 import getAnswer from "@/services/apis/getAnswer";
 import createChatFirestore from "@/helpers/createChatFirestore";
+import { formatGeminiAnswer } from "@/helpers/formatAnswer";
 
 /* FOR CORRECT SANITIZATION OF DATA, INSERT OK: TRUE ON EACH ACTION SO THE FORM CAN BE RESET */
 
@@ -141,19 +142,32 @@ export const homeAction: ActionFunction = async ({ request }) => {
     const user = JSON.parse(localStorage.getItem("user") as string);
     if (!user) throw new Error("Utente non autenticato");
 
-    // get question from form data and history chat
+    // get data from data form
     const question = formData.get("message")?.toString().trim();
-    const historyChat = new Array(formData.get("historyChat"));
+    const historyChat = JSON.parse(formData.get("historyChat") as string);
+    const chatId = formData.get("chatId")?.toString().trim() ?? "";
+
+    // check if question is provided
     if (!question) throw new Error("Inserisci una domanda");
 
     // get answer from getAnswer API
-    const { title, html } = await getAnswer(question, historyChat.length > 0 ? historyChat : []);
-    if (!title || !html) throw new Error("Errore nella risposta");
+    const answer = await getAnswer(question, historyChat);
+    if (!answer) throw new Error("Errore nella risposta");
 
     // create chat in firebase
-    const chat = await createChatFirestore(title, [{ question, answer: html }], user.uid);
+    const { title, newAnswer } = formatGeminiAnswer(answer);
 
-    return { answer: html, chat, ok: true };
+    // create chat if history chat is not empty
+    if (historyChat.length === 0) {
+      const chat = await createChatFirestore(title, [{ question, answer: newAnswer }], user.uid);
+      return { answer: newAnswer, chat, ok: true };
+    } else {
+      const currChat = await getDocData(getDocReference("chats", chatId));
+      const updateChat = { messages: [...currChat.messages, { question, answer: newAnswer }] };
+      await updateResource("chats", chatId, updateChat);
+    }
+
+    return { answer: newAnswer, ok: true };
   } catch (error: any) {
     toast.error(error.message);
     return null;

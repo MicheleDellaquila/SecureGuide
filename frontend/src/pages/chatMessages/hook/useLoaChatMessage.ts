@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useMessagesActionCtx } from "@/context/messagesCtx/useMessagesCtx";
 import { getDocReference } from "@/services/firebaseQuery";
 import { getDoc } from "firebase/firestore";
-import ConvertMessageFirestore from "@/helpers/convertMessageFirestore";
+import { ConvertMessageFirestore } from "@/helpers/convertMessages";
 
 const useLoaChatMessage = () => {
   const { chatId } = useParams();

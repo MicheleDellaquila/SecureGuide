@@ -29,6 +29,8 @@
   }
 
   &__prose {
+    position: relative;
+
     & > p {
       font-size: 1.6rem;
       color: var(--grayscale-color-950);
