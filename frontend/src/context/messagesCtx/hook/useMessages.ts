@@ -8,7 +8,7 @@ const messagesReducer = (state: MessagesCtxsState, action: MessagesCtxAction): M
       return { ...state, messages: [...action.payload] };
 
     case "ADD_MESSAGE": {
-      const copyMessages = [...state.messages];
+      const copyMessages = [...state.messages.filter(message => message.text !== "...")];
       const updatedMessages = [...copyMessages, action.payload];
 
       return { ...state, messages: [...updatedMessages] };
