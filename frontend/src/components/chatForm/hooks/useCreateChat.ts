@@ -14,9 +14,10 @@ const useCreateChat = (formResult: any) => {
 
     // update messages and chats
     dispatch({ type: "ADD_MESSAGE", payload: { text: formResult.answer, sender: "model" } });
-    chatsDispatch(formResult.chat);
 
-    // navigate to chat
+    // add chat to chats and redirect to chat if form return a chat result
+    if (!formResult?.chat) return;
+    chatsDispatch({ type: "ADD_CHAT", payload: formResult.chat });
     navigate(`/home/chat/${formResult.chat.id}`);
   }, [formResult]);
 

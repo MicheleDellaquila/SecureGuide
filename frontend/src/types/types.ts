@@ -5,7 +5,7 @@ export type messageSender = "user" | "model";
 
 // REDUCER TYPES ACTIONS
 // Messages actions
-type INITIALIZE_MESSAGES = { type: "INITIALIZE_MESSAGES"; payload: Array<Messages> };
+type INITIALIZE_MESSAGES = { type: "INITIALIZE_MESSAGES"; payload: Array<Message> };
 type ADD_MESSAGE = { type: "ADD_MESSAGE"; payload: { text: string; sender: messageSender } };
 type RESET_MESSAGES = { type: "RESET_MESSAGES" };
 export type MessagesCtxAction = INITIALIZE_MESSAGES | ADD_MESSAGE | RESET_MESSAGES;
@@ -20,12 +20,12 @@ export type ChatsCtxAction = ADD_CHAT | INITIALIZE_CHATS | SELECT_CHAT;
 export interface Chat {
   uid: string;
   title: string;
-  messages: Messages[];
+  messages: Message[];
   userID: string;
   createdAt: Timestamp;
 }
 
-export interface Messages {
+export interface Message {
   text: string;
   sender: messageSender;
 }
@@ -35,8 +35,17 @@ export interface MessagesDB {
   answer: string;
 }
 
+interface ChatParts {
+  role: messageSender;
+  parts: Array<{ text: string }>;
+}
+
+export interface HistoryChat {
+  history: Array<ChatParts>;
+}
+
 export interface MessagesCtxsState {
-  messages: Array<Messages>;
+  messages: Array<Message>;
 }
 
 export interface ChatsCtxState {
