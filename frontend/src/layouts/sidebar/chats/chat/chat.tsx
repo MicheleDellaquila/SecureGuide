@@ -11,10 +11,11 @@ interface ChatProps {
   title: string;
   timestamps: Timestamp;
   isSelected: boolean;
+  onCloseSidebar?: () => void;
 }
 
-const Chat = ({ uid, title, timestamps, isSelected }: ChatProps) => {
-  const { selectChat } = useSelectChat();
+const Chat = ({ uid, title, timestamps, isSelected, onCloseSidebar }: ChatProps) => {
+  const { selectChat } = useSelectChat(onCloseSidebar);
 
   return (
     <div className={clsx("Chat", isSelected && "Chat--selected")} onClick={() => selectChat(uid)}>

@@ -8,14 +8,14 @@ import ChatsNotFound from "./chatsNotFound/chatsNotFound";
 // chats props
 interface ChatsProps {
   isMobile: boolean;
-  onClose?: () => void;
+  onCloseSidebar?: () => void;
 }
 
-const Chats = ({ isMobile, onClose }: ChatsProps) => {
+const Chats = ({ isMobile, onCloseSidebar }: ChatsProps) => {
   const { chats, chatSelected } = useChatsCtx();
 
   // check if there are no chats
-  if (chats.length === 0) return <ChatsNotFound isMobile={isMobile} onClose={onClose} />;
+  if (chats.length === 0) return <ChatsNotFound isMobile={isMobile} onCloseSidebar={onCloseSidebar} />;
 
   return (
     <ul className="Chats">
@@ -23,7 +23,14 @@ const Chats = ({ isMobile, onClose }: ChatsProps) => {
         const isSelected = chatSelected === chat.uid;
 
         return (
-          <Chat key={chat.uid} uid={chat.uid} title={chat.title} timestamps={chat.createdAt} isSelected={isSelected} />
+          <Chat
+            key={chat.uid}
+            uid={chat.uid}
+            title={chat.title}
+            timestamps={chat.createdAt}
+            isSelected={isSelected}
+            onCloseSidebar={onCloseSidebar}
+          />
         );
       })}
     </ul>
