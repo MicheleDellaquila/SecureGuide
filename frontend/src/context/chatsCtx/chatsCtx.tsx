@@ -3,7 +3,7 @@ import type { ChatsCtxAction, ChatsCtxState } from "@/types/types";
 import useChats from "./hook/useChats";
 
 // Chats context
-export const ChatsCtx = createContext<ChatsCtxState>({ chats: [] });
+export const ChatsCtx = createContext<ChatsCtxState>({ chats: [], chatSelected: null });
 export const ChatsActionCtx = createContext<Dispatch<ChatsCtxAction>>(() => {});
 
 export const ChatsProvider = ({ children }: PropsWithChildren) => {

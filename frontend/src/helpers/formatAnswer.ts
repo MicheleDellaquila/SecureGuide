@@ -20,7 +20,12 @@ export const formatGeminiAnswer = (answer: string): formatGeminiAnswerResponse =
   }
 };
 
-// convert answer text to html
+// Funzione helper per convertire i link markdown in tag <a>
+const linkifyMarkdown = (text: string) => {
+  const markdownLinkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s\)]+)\)/g;
+  return text.replace(markdownLinkRegex, (match, text, url) => `<a href="${url}" target="_blank">${text}</a>`);
+};
+
 export const convertAnswerTextToHtml = (text: string) => {
   const lines = text.split("\n");
   let response = "";
@@ -29,6 +34,9 @@ export const convertAnswerTextToHtml = (text: string) => {
   // Loop through the lines to build the response
   for (let i = 0; i < lines.length; i++) {
     let line = lines[i].trim();
+
+    // Converti i link markdown nel testo
+    line = linkifyMarkdown(line);
 
     // Check if the line is a title (Assuming titles are followed by ":")
     if (line.endsWith(":")) {

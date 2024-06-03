@@ -18,7 +18,7 @@ const useCreateChat = (formResult: any) => {
     // add chat to chats and redirect to chat if form return a chat result
     if (!formResult?.chat) return;
     chatsDispatch({ type: "ADD_CHAT", payload: formResult.chat });
-    navigate(`/home/chat/${formResult.chat.id}`);
+    navigate(`/home/chat/${formResult.chat.uid}`);
   }, [formResult]);
 
   // block textarea behavior

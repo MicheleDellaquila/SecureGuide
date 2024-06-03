@@ -14,7 +14,7 @@ const createChatFirestore = async (title: string, messages: MessagesDB[], userID
     };
     await setDoc(chatRef, chat);
 
-    return { title, id: chatRef.id, createdAt: chat.createdAt };
+    return { title, uid: chatRef.id, createdAt: chat.createdAt };
   } catch (error: any) {
     console.error(error);
     throw new Error("Errore nella creazione della chat");
