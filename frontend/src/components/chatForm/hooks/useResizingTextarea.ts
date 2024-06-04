@@ -3,7 +3,8 @@ import { useCallback, useLayoutEffect } from "react";
 const useResizingTextarea = (refTextArea: React.MutableRefObject<HTMLTextAreaElement | null>) => {
   const adjustHeight = useCallback(() => {
     if (!refTextArea.current) return;
-    if(!refTextArea.current.value) return refTextArea.current.style.height = `40px`;
+    console.log(refTextArea.current.value);
+    if (!refTextArea.current.value) return (refTextArea.current.style.height = `40px`);
 
     // check if text exceeds the maxHeight
     if (refTextArea.current.scrollHeight > 220) {
@@ -38,6 +39,8 @@ const useResizingTextarea = (refTextArea: React.MutableRefObject<HTMLTextAreaEle
       refTextArea.current?.removeEventListener("input", adjustHeight);
     };
   }, [adjustHeight]);
+
+  return { adjustHeight };
 };
 
 export default useResizingTextarea;

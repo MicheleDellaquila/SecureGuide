@@ -20,8 +20,8 @@ interface ChatFormProps {
 const ChatForm = ({ formState, formResult }: ChatFormProps) => {
   const { refTextArea } = useFocusTextAreaCtx();
   const { message } = useWatch();
-  const { blockTextArea } = useChatForm(formResult);
-  useResizingTextarea(refTextArea);
+  const { adjustHeight } = useResizingTextarea(refTextArea);
+  const { blockTextArea } = useChatForm(formResult, adjustHeight, refTextArea);
 
   return (
     <div className="ChatForm">
