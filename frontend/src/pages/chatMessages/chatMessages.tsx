@@ -1,6 +1,6 @@
 import "./chatMessages.scss";
 import { useMessagesCtx } from "@/context/messagesCtx/useMessagesCtx";
-import useLoaChatMessage from "./hook/useLoaChatMessage";
+import useLoadChatMessage from "./hook/useLoadChatMessage";
 
 // components
 import MessagesNotFound from "./messagesNotFound/messagesNotFound";
@@ -8,7 +8,7 @@ import Message from "./message/message";
 
 export const ChatMessages = () => {
   const { messages } = useMessagesCtx();
-  useLoaChatMessage();
+  useLoadChatMessage();
 
   // check if messages is empty
   if (messages.length === 0) return <MessagesNotFound />;

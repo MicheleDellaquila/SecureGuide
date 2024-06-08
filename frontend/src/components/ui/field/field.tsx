@@ -2,35 +2,35 @@ import type { HTMLProps, PropsWithChildren } from "react";
 import "./field.scss";
 
 // label props
-interface FieldLabelProps extends HTMLProps<HTMLLabelElement> {
+interface LabelProps extends HTMLProps<HTMLLabelElement> {
   htmlFor?: string;
   label: string;
   required?: boolean;
 }
 
 // label component
-const FieldLabel = ({ htmlFor, label, required }: FieldLabelProps) => {
+const Label = ({ htmlFor, label, required }: LabelProps) => {
   return (
-    <label className="FieldLabel" htmlFor={htmlFor}>
+    <label className="Label" htmlFor={htmlFor}>
       {label}
-      {required && <span className="FieldLabel__required">*</span>}
+      {required && <span className="Label__required">*</span>}
     </label>
   );
 };
 
 // field props
 interface FieldProps extends HTMLProps<HTMLDivElement> {
-  errorMessages?: string;
+  errorMessage?: string;
 }
 
-export const Field = ({ errorMessages, children }: PropsWithChildren<FieldProps>) => {
+export const Field = ({ errorMessage, children }: PropsWithChildren<FieldProps>) => {
   return (
     <div className="Field">
       {children}
-      {errorMessages && <p className="Field__error">{errorMessages}</p>}
+      {errorMessage && <p className="Field__error">{errorMessage}</p>}
     </div>
   );
 };
 
 // export all components of field
-Field.Label = FieldLabel;
+Field.Label = Label;

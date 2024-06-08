@@ -1,8 +1,7 @@
-// components
 import Spinner from "@/components/ui/spinner/spinner";
 
 // styles
-import "./pageLoading.css";
+import "./pageLoading.scss";
 
 const PageLoading = () => {
   return (

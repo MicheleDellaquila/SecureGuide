@@ -1,4 +1,5 @@
 import type { FieldErrors, UseFormClearErrors } from "react-hook-form";
+import useCloseModal from "./hook/useCloseModal";
 
 // components
 import { Field } from "@/components/ui/field/field";
@@ -7,7 +8,6 @@ import Button from "@/components/ui/button/button";
 
 // styles
 import "./updateProfileForm.scss";
-import useCloseModal from "./hook/useCloseModal";
 
 // update profile props
 interface UpdateProfileFormProps {
@@ -23,7 +23,7 @@ const UpdateProfileForm = ({ formState, formResult, errors, onClearErrors, onClo
 
   return (
     <>
-      <Field errorMessages={errors?.fullName?.message ?? ""}>
+      <Field errorMessage={errors?.fullName?.message ?? ""}>
         <Field.Label htmlFor="fullName" label="FullName" required />
         <Input
           className={errors?.fullName?.message && "UpdateProfileForm__input--error"}
@@ -34,7 +34,7 @@ const UpdateProfileForm = ({ formState, formResult, errors, onClearErrors, onClo
           onChange={() => onClearErrors?.(["fullName"])}
         />
       </Field>
-      <Field errorMessages={errors?.email?.message ?? ""}>
+      <Field errorMessage={errors?.email?.message ?? ""}>
         <Field.Label htmlFor="email" label="Email" required />
         <Input
           className={errors?.email?.message && "UpdateProfileForm__input--error"}

@@ -35,7 +35,13 @@ export const SignIn = () => {
             <p className="SignIn__box-text">
               Accedi a SecureGuide per proteggere e informati sulla privacy e sicurezza
             </p>
-            <Form className="SignIn__form" formValues={user} formSchema={signInSchema} onSubmitForm={loginUser}>
+            <Form
+              key="signInForm"
+              className="SignIn__form"
+              formValues={user}
+              formSchema={signInSchema}
+              onSubmitForm={loginUser}
+            >
               <SignInForm />
             </Form>
             <p className="SignIn__text">

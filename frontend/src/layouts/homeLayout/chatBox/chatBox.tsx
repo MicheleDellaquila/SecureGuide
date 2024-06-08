@@ -12,7 +12,7 @@ const ChatBox = () => {
 
   return (
     <div className="ChatBox">
-      <Form formValues={{ message }} onSubmitForm={sendMessage}>
+      <Form key="chat-box" formValues={{ message }} onSubmitForm={sendMessage}>
         <ChatForm />
       </Form>
       <p className="ChatBox__text">

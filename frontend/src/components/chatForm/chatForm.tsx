@@ -1,5 +1,6 @@
 import useFocusTextAreaCtx from "@/context/focusTextAreaCtx/useFocusTextAreaCtx";
 import useResizingTextarea from "./hooks/useResizingTextarea";
+import useChatForm from "./hooks/useCreateChat";
 import { useWatch } from "react-hook-form";
 
 // components
@@ -9,7 +10,6 @@ import { ArrowUp } from "lucide-react";
 
 // styles
 import "./chatForm.scss";
-import useChatForm from "./hooks/useCreateChat";
 
 // chat form props
 interface ChatFormProps {

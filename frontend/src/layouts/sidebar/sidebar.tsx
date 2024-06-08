@@ -10,7 +10,6 @@ import AddChat from "@/components/addChat/addChat";
 
 // Sidebar component
 interface SidebarProps {
-
   onClose?: () => void;
 }
 

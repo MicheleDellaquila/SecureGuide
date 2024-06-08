@@ -23,7 +23,7 @@ const SignUpForm = ({ formState, errors, onClearErrors }: SignUpFormProps) => {
 
   return (
     <>
-      <Field errorMessages={errors?.fullName?.message ?? ""}>
+      <Field errorMessage={errors?.fullName?.message ?? ""}>
         <Field.Label htmlFor="fullName" label="FullName" required />
         <Input
           className={errors?.fullName?.message && "SignUpForm__input--error"}
@@ -34,7 +34,7 @@ const SignUpForm = ({ formState, errors, onClearErrors }: SignUpFormProps) => {
           onChange={() => onClearErrors?.(["fullName"])}
         />
       </Field>
-      <Field errorMessages={errors?.email?.message ?? ""}>
+      <Field errorMessage={errors?.email?.message ?? ""}>
         <Field.Label htmlFor="email" label="Email" required />
         <Input
           className={errors?.email?.message && "SignUpForm__input--error"}
@@ -45,7 +45,7 @@ const SignUpForm = ({ formState, errors, onClearErrors }: SignUpFormProps) => {
           onChange={() => onClearErrors?.(["email"])}
         />
       </Field>
-      <Field errorMessages={errors?.password?.message ?? ""}>
+      <Field errorMessage={errors?.password?.message ?? ""}>
         <Field.Label label="Password" required />
         <div className="SignUpForm__wrapper">
           <Input

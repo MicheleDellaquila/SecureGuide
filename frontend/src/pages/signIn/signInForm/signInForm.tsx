@@ -24,7 +24,7 @@ const SignInForm = ({ formState, errors, onClearErrors }: SignInFormProps) => {
 
   return (
     <>
-      <Field errorMessages={errors?.email?.message ?? ""}>
+      <Field errorMessage={errors?.email?.message ?? ""}>
         <Field.Label htmlFor="email" label="Email" required />
         <Input
           className={errors?.email?.message && "SignInForm__input--error"}
@@ -35,7 +35,7 @@ const SignInForm = ({ formState, errors, onClearErrors }: SignInFormProps) => {
           onChange={() => onClearErrors?.(["email"])}
         />
       </Field>
-      <Field errorMessages={errors?.password?.message ?? ""}>
+      <Field errorMessage={errors?.password?.message ?? ""}>
         <Field.Label htmlFor="password" label="Password" required />
         <div className="SignInForm__wrapper">
           <Input

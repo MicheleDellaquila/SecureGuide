@@ -6,7 +6,7 @@ import { getDocReference } from "@/services/firebaseQuery";
 import { getDoc } from "firebase/firestore";
 import { ConvertMessageFirestore } from "@/helpers/convertMessages";
 
-const useLoaChatMessage = () => {
+const useLoadChatMessage = () => {
   const { chatId } = useParams();
   const { dispatch } = useMessagesActionCtx();
 
@@ -33,4 +33,4 @@ const useLoaChatMessage = () => {
   }, [loadChatMessages]);
 };
 
-export default useLoaChatMessage;
+export default useLoadChatMessage;
