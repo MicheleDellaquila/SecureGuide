@@ -1,5 +1,5 @@
 import useUpdateProfile from "./hook/useUpdateProfile";
-import { updateProfileSchema } from "@/utils/zodSchema";
+import updateProfileSchema from "./updateProfileZodSchema";
 
 // components
 import { X } from "lucide-react";

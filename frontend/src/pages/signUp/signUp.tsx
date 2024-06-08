@@ -1,12 +1,12 @@
 import useSignUp from "./hook/useSignUp";
-import { signUpSchema } from "@/utils/zodSchema";
+import signUpSchema from "./signUpZodSchema";
 import { slideTitle, slideText, slideTitle2, slideText2, slideTitle3, slideText3 } from "@/utils/constants/slideInfo";
 import slideAuth from "@/assets/images/slideAuth.webp";
 import slideAuth2 from "@/assets/images/slideAuth2.png";
 import slideAuth3 from "@/assets/images/slideAuth3.png";
 
 // components
-import Container from "@/containers/container/container";
+import Container from "@/layouts/container/container";
 import Form from "@/components/ui/form/form";
 import SignUpForm from "./signUpForm/signUpForm";
 import Carousel from "@/components/ui/carousel/carousel";
