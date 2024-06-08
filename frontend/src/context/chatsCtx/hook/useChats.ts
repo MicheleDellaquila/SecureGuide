@@ -2,7 +2,7 @@ import { useRef, useEffect, useCallback, useReducer } from "react";
 import type { Chat, ChatsCtxAction, ChatsCtxState } from "@/types/types";
 import { collection } from "firebase/firestore";
 import { getDocsData } from "@/services/firebaseQuery";
-import { firestore } from "@/services/firebase";
+import { firestore } from "@/configs/firebase";
 import { toast } from "react-toastify";
 
 // chat reducer

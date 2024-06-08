@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { auth } from "@/services/firebase";
+import { auth } from "@/configs/firebase";
 import { toast } from "react-toastify";
 
 const useSignOut = () => {

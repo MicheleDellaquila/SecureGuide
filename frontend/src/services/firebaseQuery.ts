@@ -1,4 +1,4 @@
-import { firestore } from "@/services/firebase";
+import { firestore } from "@/configs/firebase";
 import {
   type QueryConstraint,
   type CollectionReference,

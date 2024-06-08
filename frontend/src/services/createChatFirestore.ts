@@ -1,4 +1,4 @@
-import { firestore } from "@/services/firebase";
+import { firestore } from "@/configs/firebase";
 import { Timestamp, collection, doc, setDoc } from "firebase/firestore";
 import type { MessagesDB } from "@/types/types";
 

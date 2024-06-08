@@ -1,7 +1,7 @@
 import useWindowSize from "@/hooks/useWindowSize";
 
 // components
-import Container from "@/containers/container/container";
+import Container from "@/layouts/container/container";
 import Header from "@/layouts/header/header";
 import HeaderMobile from "@/layouts/headerMobile/headerMobile";
 import Sidebar from "@/layouts/sidebar/sidebar";

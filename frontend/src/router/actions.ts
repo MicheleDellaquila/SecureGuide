@@ -11,11 +11,11 @@ import {
   signOut,
 } from "firebase/auth";
 import { setDoc, doc, updateDoc } from "firebase/firestore";
-import { auth, firestore } from "@/services/firebase";
+import { auth, firestore } from "@/configs/firebase";
 import { getDocData, getDocReference, updateResource } from "@/services/firebaseQuery";
 import { toast } from "react-toastify";
 import getAnswer from "@/services/apis/getAnswer";
-import createChatFirestore from "@/helpers/createChatFirestore";
+import createChatFirestore from "@/services/createChatFirestore";
 import { formatGeminiAnswer } from "@/helpers/formatAnswer";
 
 /* FOR CORRECT SANITIZATION OF DATA, INSERT OK: TRUE ON EACH ACTION SO THE FORM CAN BE RESET */

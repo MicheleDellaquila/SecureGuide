@@ -1,4 +1,4 @@
-import { axiosInstance } from "../axios";
+import { axiosInstance } from "@/configs/axios";
 import type { HistoryChat } from "@/types/types";
 
 const getAnswer = async (question: string, historyChat: HistoryChat | []) => {

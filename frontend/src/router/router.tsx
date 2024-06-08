@@ -2,7 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route } from "react-rout
 import { loginAction, signUpAction, homeAction } from "./actions";
 
 // pages
-import { Root } from "./root";
+import { Root } from "./root/root";
 import { SignIn } from "@/pages/signIn/signIn";
 import { SignUp } from "@/pages/signUp/signUp";
 import { ProtectedRoute } from "@/components/protectedRoute/protectedRoute";
