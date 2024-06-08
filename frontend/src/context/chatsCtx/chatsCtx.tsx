@@ -1,5 +1,5 @@
 import { createContext, type Dispatch, type PropsWithChildren } from "react";
-import type { ChatsCtxAction, ChatsCtxState } from "@/types/types";
+import type { ChatsCtxAction, ChatsCtxState } from "@/types/reducerTypes";
 import useChats from "./hook/useChats";
 
 // Chats context

@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import type { MessagesCtxsState, MessagesCtxAction } from "@/types/types";
+import type { MessagesCtxsState, MessagesCtxAction } from "@/types/reducerTypes";
 
 // messages reducer
 const messagesReducer = (state: MessagesCtxsState, action: MessagesCtxAction): MessagesCtxsState => {

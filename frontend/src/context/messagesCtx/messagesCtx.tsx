@@ -1,5 +1,5 @@
 import { createContext, type Dispatch, type PropsWithChildren } from "react";
-import type { MessagesCtxAction, MessagesCtxsState } from "@/types/types";
+import type { MessagesCtxAction, MessagesCtxsState } from "@/types/reducerTypes";
 import useMessages from "./hook/useMessages";
 
 // messages context

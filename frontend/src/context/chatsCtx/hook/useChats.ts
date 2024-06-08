@@ -1,5 +1,6 @@
 import { useRef, useEffect, useCallback, useReducer } from "react";
-import type { Chat, ChatsCtxAction, ChatsCtxState } from "@/types/types";
+import type { Chat } from "@/types/types";
+import type { ChatsCtxState, ChatsCtxAction } from "@/types/reducerTypes";
 import { collection } from "firebase/firestore";
 import { getDocsData } from "@/services/firebaseQuery";
 import { firestore } from "@/configs/firebase";
