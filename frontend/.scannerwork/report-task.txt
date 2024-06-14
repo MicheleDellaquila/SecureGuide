@@ -2,5 +2,5 @@ projectKey=SecureGuide
 serverUrl=http://localhost:9000
 serverVersion=10.5.1.90531
 dashboardUrl=http://localhost:9000/dashboard?id=SecureGuide
-ceTaskId=ff6837c0-a3fe-416a-b7d3-7a9ee8ce2e9f
-ceTaskUrl=http://localhost:9000/api/ce/task?id=ff6837c0-a3fe-416a-b7d3-7a9ee8ce2e9f
+ceTaskId=e1b89c3a-7ca3-4860-9605-4554ce8ea6c1
+ceTaskUrl=http://localhost:9000/api/ce/task?id=e1b89c3a-7ca3-4860-9605-4554ce8ea6c1
