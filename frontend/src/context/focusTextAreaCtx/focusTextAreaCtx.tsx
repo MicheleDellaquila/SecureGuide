@@ -19,6 +19,4 @@ export const FocusTextAreaCtxProvider = ({ children }: PropsWithChildren) => {
 };
 
 export default FocusTextAreaCtxProvider;
-{
-  /* <FocusTextAreaCtx.Provider value={{ refTextArea }}>{children}</FocusTextAreaCtx.Provider>; */
-}
+

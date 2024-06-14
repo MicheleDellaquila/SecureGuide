@@ -123,7 +123,7 @@ table {
 }
 
 /* disable animations */
-@media (prefers-reduce-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
   * {
     transition-duration: 0;
     animation-duration: 0;
