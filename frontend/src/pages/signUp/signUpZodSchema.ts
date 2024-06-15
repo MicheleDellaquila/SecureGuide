@@ -1,7 +1,7 @@
 import * as z from "zod";
 
 const signUpSchema = z.object({
-  fullName: z.string({ message: "Questo campo è richiesto" }),
+  fullName: z.string().min(1, { message: "Questo campo è richiesto" }),
   email: z.string({ message: "Questo campo è richiesto" }).email({ message: "Inserisci un indirizzo email valido" }),
   password: z
     .string({ message: "Questo campo è richiesto" })

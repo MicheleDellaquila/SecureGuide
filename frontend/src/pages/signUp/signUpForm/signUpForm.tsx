@@ -25,34 +25,34 @@ const SignUpForm = ({ formState, errors, onClearErrors }: SignUpFormProps) => {
     <>
       <Field errorMessage={errors?.fullName?.message ?? ""}>
         <Field.Label htmlFor="fullName" label="FullName" required />
-        <Input
-          className={errors?.fullName?.message && "SignUpForm__input--error"}
+        <Field.Input
           type="text"
           id="fullName"
           name="fullName"
           placeholder="Mario Rossi"
+          isInError={!!errors?.fullName?.message}
           onChange={() => onClearErrors?.(["fullName"])}
         />
       </Field>
       <Field errorMessage={errors?.email?.message ?? ""}>
         <Field.Label htmlFor="email" label="Email" required />
-        <Input
-          className={errors?.email?.message && "SignUpForm__input--error"}
+        <Field.Input
           type="email"
           id="email"
           name="email"
           placeholder="example@gmail.com"
+          isInError={!!errors?.email?.message}
           onChange={() => onClearErrors?.(["email"])}
         />
       </Field>
       <Field errorMessage={errors?.password?.message ?? ""}>
         <Field.Label label="Password" required />
         <div className="SignUpForm__wrapper">
-          <Input
-            className={errors?.password?.message && "SignUpForm__input--error"}
+          <Field.Input
             type={showPassword ? "text" : "password"}
             placeholder="********"
             name="password"
+            isInError={!!errors?.password?.message}
             onChange={() => onClearErrors?.(["password"])}
           />
           <ShowPassword isVisible={showPassword} onChangeVisibility={handleShowPassword} />

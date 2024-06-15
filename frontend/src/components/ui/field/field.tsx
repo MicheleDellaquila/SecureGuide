@@ -1,5 +1,6 @@
 import type { HTMLProps, PropsWithChildren } from "react";
 import "./field.scss";
+import Input from "@/components/ui/input/input";
 
 // label props
 interface LabelProps extends HTMLProps<HTMLLabelElement> {
@@ -34,3 +35,4 @@ export const Field = ({ errorMessage, children }: PropsWithChildren<FieldProps>)
 
 // export all components of field
 Field.Label = Label;
+Field.Input = Input;

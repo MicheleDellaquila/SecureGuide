@@ -6,9 +6,6 @@ import { Field } from "@/components/ui/field/field";
 import Input from "@/components/ui/input/input";
 import Button from "@/components/ui/button/button";
 
-// styles
-import "./updateProfileForm.scss";
-
 // update profile props
 interface UpdateProfileFormProps {
   formState?: string;
@@ -25,23 +22,23 @@ const UpdateProfileForm = ({ formState, formResult, errors, onClearErrors, onClo
     <>
       <Field errorMessage={errors?.fullName?.message ?? ""}>
         <Field.Label htmlFor="fullName" label="FullName" required />
-        <Input
-          className={errors?.fullName?.message && "UpdateProfileForm__input--error"}
+        <Field.Input
           type="text"
           id="fullName"
           name="fullName"
           placeholder="Mario Rossi"
+          isInError={!!errors?.fullName?.message}
           onChange={() => onClearErrors?.(["fullName"])}
         />
       </Field>
       <Field errorMessage={errors?.email?.message ?? ""}>
         <Field.Label htmlFor="email" label="Email" required />
-        <Input
-          className={errors?.email?.message && "UpdateProfileForm__input--error"}
+        <Field.Input
           type="email"
           id="email"
           name="email"
           placeholder="example@gmail.com"
+          isInError={!!errors?.email?.message}
           onChange={() => onClearErrors?.(["email"])}
         />
       </Field>

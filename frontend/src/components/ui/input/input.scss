@@ -5,14 +5,18 @@
   border: 1px solid var(--grayscale-color-200);
   border-radius: var(--border-radius-sm);
   font-family: var(--font-family);
-}
 
-.Input::placeholder,
-.Input:placeholder-shown {
-  color: var(--grayscale-color-500);
-}
+  &::placeholder,
+  &:placeholder-shown {
+    color: var(--grayscale-color-500);
+  }
 
-.Input:focus-visible {
-  outline: 2px solid var(--primary-color-500);
-  border-color: var(--primary-color-500);
+  &:focus-visible {
+    outline: 2px solid var(--primary-color-500);
+    border-color: var(--primary-color-500);
+  }
+
+  &--error {
+    border: 1px solid var(--feedbackRed-color-500);
+  }
 }
