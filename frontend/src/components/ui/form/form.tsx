@@ -1,4 +1,4 @@
-import { type PropsWithChildren, Children, isValidElement, cloneElement, useEffect, forwardRef } from "react";
+import { type PropsWithChildren, Children, isValidElement, cloneElement, useEffect, forwardRef, memo } from "react";
 import { type FetcherFormProps, type FetcherSubmitFunction, useFetcher } from "react-router-dom";
 import type { ZodSchema } from "zod";
 import { useForm, FormProvider } from "react-hook-form";
@@ -65,4 +65,4 @@ const Form = forwardRef<HTMLFormElement, PropsWithChildren<FormProps>>(
   },
 );
 
-export default Form;
+export default memo(Form);
