@@ -20,8 +20,8 @@ const UpdateProfileModal = ({ onClose }: UpdateProfileModalProps) => {
   return (
     <div className="UpdateProfileModal">
       <div className="UpdateProfileModal__header">
-        <h3 className="UpdateProfileModal__header-title">Modifica Profilo</h3>
-        <span className="UpdateProfileModal__header-closeIcon" onClick={onClose}>
+        <h2 className="UpdateProfileModal__header-title">Modifica Profilo</h2>
+        <span role="button" className="UpdateProfileModal__header-closeIcon" onClick={onClose} aria-label="Chiudi">
           <X />
         </span>
       </div>

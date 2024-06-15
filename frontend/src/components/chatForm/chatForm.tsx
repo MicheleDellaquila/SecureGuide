@@ -1,6 +1,7 @@
 import useFocusTextAreaCtx from "@/context/focusTextAreaCtx/useFocusTextAreaCtx";
 import useResizingTextarea from "./hooks/useResizingTextarea";
 import { useWatch } from "react-hook-form";
+import useChatForm from "./hooks/useCreateChat";
 
 // components
 import Textarea from "@/components/ui/textarea/textarea";
@@ -9,7 +10,6 @@ import { ArrowUp } from "lucide-react";
 
 // styles
 import "./chatForm.scss";
-import useChatForm from "./hooks/useCreateChat";
 
 // chat form props
 interface ChatFormProps {
@@ -28,8 +28,9 @@ const ChatForm = ({ formState, formResult }: ChatFormProps) => {
       <div className="ChatForm__inner">
         <Textarea
           ref={refTextArea}
-          className="ChatForm__textarea"
+          id="message"
           name="message"
+          className="ChatForm__textarea"
           placeholder="Scrivi a SecureGuide"
           onKeyDown={blockTextArea}
         />
@@ -38,6 +39,8 @@ const ChatForm = ({ formState, formResult }: ChatFormProps) => {
           className="ChatForm__button"
           size="sm"
           variant="primary"
+          aria-label="Invia"
+          aria-disabled={!message || formState === "submitting"}
         >
           <ArrowUp size={24} />
         </Button>

@@ -1,4 +1,4 @@
-import "./showPassword.scss"
+import "./showPassword.scss";
 import { Eye, EyeOff } from "lucide-react";
 
 // show password props
@@ -9,7 +9,12 @@ interface ShowPasswordProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 const ShowPassword = ({ isVisible, onChangeVisibility }: ShowPasswordProps) => {
   return (
-    <span className="ShowPassword" onClick={onChangeVisibility}>
+    <span
+      role="button"
+      className="ShowPassword"
+      onClick={onChangeVisibility}
+      aria-label={isVisible ? "Nascondi Password" : "Mostra Password"}
+    >
       {isVisible ? <Eye size={16} /> : <EyeOff size={16} />}
     </span>
   );

@@ -15,7 +15,7 @@ const GoBack = ({ className, sizeIcon = 20 }: GoBackProps) => {
   const navigate = useNavigate();
 
   return (
-    <span className={clsx("GoBack", className)} onClick={() => navigate(-1)}>
+    <span role="button" className={clsx("GoBack", className)} onClick={() => navigate(-1)} aria-label="Indietro">
       <ArrowLeft className="GoBack__icon" size={sizeIcon} />
     </span>
   );

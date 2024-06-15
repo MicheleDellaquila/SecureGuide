@@ -27,7 +27,7 @@ const UserProfile = () => {
           <img className="UserProfile__profile-img" src={Profile} width={32} height={32} alt="profile" />
           <p className="UserProfile__profile-userName">{user.fullName}</p>
         </div>
-        <span className="UserProfile__logout" onClick={logoutUserHandler}>
+        <span role="button" className="UserProfile__logout" onClick={logoutUserHandler} aria-label="Logout">
           <LogOut size={20} />
         </span>
       </div>

@@ -9,6 +9,10 @@
     padding-inline: 0.4rem;
   }
 
+  &__label {
+    flex: 1;
+  }
+
   &__textarea {
     height: 40px;
     max-height: 22rem;
