@@ -2,10 +2,9 @@ import type { FieldErrors, UseFormClearErrors } from "react-hook-form";
 import useShowPassword from "@/hooks/useShowPassword";
 
 // components
-import { Field } from "@/components/ui/field/field";
-import Input from "@/components/ui/input/input";
-import Button from "@/components/ui/button/button";
-import ShowPassword from "@/components/showPassword/showPassword";
+import { Field } from "@ui/field/field";
+import Button from "@ui/button/button";
+import ShowPasswordIcon from "@icons/showPasswordIcon/showPasswordIcon";
 import { Link } from "react-router-dom";
 
 // styles
@@ -46,7 +45,7 @@ const SignInForm = ({ formState, errors, onClearErrors }: SignInFormProps) => {
             isInError={!!errors?.password?.message}
             onChange={() => onClearErrors?.(["password"])}
           />
-          <ShowPassword isVisible={showPassword} onChangeVisibility={handleShowPassword} />
+          <ShowPasswordIcon isVisible={showPassword} onChangeVisibility={handleShowPassword} />
           <Link className="SignInForm__forgetPassword" to="/reset-password">
             Password dimentica?
           </Link>

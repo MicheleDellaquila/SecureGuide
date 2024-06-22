@@ -1,5 +1,5 @@
 import SidebarMenu from "./sidebarMenu/sidebarMenu";
-import AddChat from "@/components/addChat/addChat";
+import AddChatIcon from "@icons/addChatIcon/addChatIcon";
 
 // styles
 import "./headerMobile.scss";
@@ -8,7 +8,7 @@ const HeaderMobile = () => {
   return (
     <header className="HeaderMobile">
       <SidebarMenu />
-      <AddChat className="HeaderMobile__addIcon" />
+      <AddChatIcon className="HeaderMobile__addIcon" iconColor="#7c7c7c" />
     </header>
   );
 };

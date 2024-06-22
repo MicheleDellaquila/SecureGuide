@@ -16,7 +16,9 @@
 
     /* paths */
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@ui/*": ["./src/components/ui/*"],
+      "@icons/*": ["./src/components/icons/*"]
     },
 
     /* Linting */

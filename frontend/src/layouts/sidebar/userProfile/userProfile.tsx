@@ -3,9 +3,9 @@ import useShowModal from "./hooks/useShowModal";
 import useSignOut from "./hooks/useSignOut";
 
 // components
-import Modal from "@/components/ui/modal/modal";
+import Modal from "@ui/modal/modal";
 import UpdateProfileModal from "./updateProfileModal/updateProfileModal";
-import { LogOut } from "lucide-react";
+import LogOutIcon from "@icons/logOutIcon/logOutIcon";
 
 // styles
 import "./userProfile.scss";
@@ -27,9 +27,7 @@ const UserProfile = () => {
           <img className="UserProfile__profile-img" src={Profile} width={32} height={32} alt="profile" />
           <p className="UserProfile__profile-userName">{user.fullName}</p>
         </div>
-        <span className="UserProfile__logout" onClick={logoutUserHandler}>
-          <LogOut size={20} />
-        </span>
+        <LogOutIcon onLogOut={logoutUserHandler} />
       </div>
     </>
   );

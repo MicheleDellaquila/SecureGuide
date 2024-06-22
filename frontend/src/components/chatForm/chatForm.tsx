@@ -4,9 +4,9 @@ import useChatForm from "./hooks/useCreateChat";
 import { useWatch } from "react-hook-form";
 
 // components
-import Textarea from "@/components/ui/textarea/textarea";
-import Button from "@/components/ui/button/button";
-import { ArrowUp } from "lucide-react";
+import Textarea from "@ui/textarea/textarea";
+import Button from "@ui/button/button";
+import Icon from "../ui/icon/icon";
 
 // styles
 import "./chatForm.scss";
@@ -39,7 +39,7 @@ const ChatForm = ({ formState, formResult }: ChatFormProps) => {
           size="sm"
           variant="primary"
         >
-          <ArrowUp size={24} />
+          <Icon name="ArrowUp" size={24} />
         </Button>
       </div>
     </div>

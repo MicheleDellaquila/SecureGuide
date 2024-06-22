@@ -5,7 +5,11 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
+    alias: [
+      { find: "@", replacement: path.resolve(__dirname, "src") },
+      { find: "@ui", replacement: path.resolve(__dirname, "src/components/ui") },
+      { find: "@icons", replacement: path.resolve(__dirname, "src/components/icons") },
+    ],
   },
   plugins: [react()],
   server: {

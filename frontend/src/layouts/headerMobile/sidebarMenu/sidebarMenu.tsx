@@ -3,23 +3,21 @@ import "./sidebarMenu.scss";
 import useShowSidebar from "./hook/useShowSidebar";
 
 // components
-import { Menu } from "lucide-react";
 import Sidebar from "@/layouts/sidebar/sidebar";
+import ButtonIcon from "@/components/ui/buttonIcon/buttonIcon";
 
 const SidebarMenu = () => {
   const { showSidebar, handleShowSidebar } = useShowSidebar();
 
   return (
     <div className="SidebarMenu">
-      <div className="SidebarMenu__inner" onClick={handleShowSidebar}>
-        <Menu size={20} />
-      </div>
+      <ButtonIcon onClick={handleShowSidebar}>
+        <ButtonIcon.Icon name="Menu" color="#656565" size={24} />
+      </ButtonIcon>
       {showSidebar &&
         createPortal(
           <div className="Backdrop">
-            <div className="Sidebar__wrapper">
-              <Sidebar onClose={handleShowSidebar} />
-            </div>
+            <Sidebar onClose={handleShowSidebar} />
           </div>,
           document.getElementById("portal")!,
         )}

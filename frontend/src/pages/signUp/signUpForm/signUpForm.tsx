@@ -1,11 +1,10 @@
 import type { FieldErrors, UseFormClearErrors } from "react-hook-form";
 import useShowPassword from "@/hooks/useShowPassword";
-import ShowPassword from "@/components/showPassword/showPassword";
 
 // components
-import { Field } from "@/components/ui/field/field";
-import Input from "@/components/ui/input/input";
-import Button from "@/components/ui/button/button";
+import { Field } from "@ui/field/field";
+import ShowPasswordIcon from "@icons/showPasswordIcon/showPasswordIcon";
+import Button from "@ui/button/button";
 
 // styles
 import "./signUpForm.scss";
@@ -55,7 +54,7 @@ const SignUpForm = ({ formState, errors, onClearErrors }: SignUpFormProps) => {
             isInError={!!errors?.password?.message}
             onChange={() => onClearErrors?.(["password"])}
           />
-          <ShowPassword isVisible={showPassword} onChangeVisibility={handleShowPassword} />
+          <ShowPasswordIcon isVisible={showPassword} onChangeVisibility={handleShowPassword} />
         </div>
       </Field>
       <Button disabled={formState === "submitting"} size="md" variant="primary">

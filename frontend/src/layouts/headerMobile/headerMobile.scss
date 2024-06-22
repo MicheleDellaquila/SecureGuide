@@ -4,11 +4,15 @@
   inset-block-start: 0;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
   padding: 1.6rem;
 
   &__addIcon {
     color: var(--grayscale-color-500);
 
+    &:hover,
     &:active {
       background-color: var(--grayscale-color-100);
     }

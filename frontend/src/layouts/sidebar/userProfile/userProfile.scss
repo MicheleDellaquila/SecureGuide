@@ -22,17 +22,4 @@
       border-radius: var(--border-radius-sm);
     }
   }
-
-  &__logout {
-    display: flex;
-    align-items: center;
-    padding-inline: 1.2rem;
-    cursor: pointer;
-
-    &:hover,
-    &:active {
-      background-color: var(--primary-color-300);
-      border-radius: var(--border-radius-sm);
-    }
-  }
 }

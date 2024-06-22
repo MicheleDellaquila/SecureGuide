@@ -2,11 +2,11 @@ import "./sidebar.scss";
 import useWindowSize from "@/hooks/useWindowSize";
 
 // components
-import Logo from "@/components/ui/logo/logo";
-import { Menu } from "lucide-react";
+import Logo from "@ui/logo/logo";
+import CloseMenuIcon from "@icons/closeMenuIcon/closeMenuIcon";
+import AddChatIcon from "@icons/addChatIcon/addChatIcon";
 import Chats from "@/layouts/sidebar/chats/chats";
 import UserProfile from "./userProfile/userProfile";
-import AddChat from "@/components/addChat/addChat";
 
 // Sidebar component
 interface SidebarProps {
@@ -18,20 +18,11 @@ const Sidebar = ({ onClose }: SidebarProps) => {
 
   return (
     <aside className="Sidebar">
-      <div className="Sidebar__header">
-        {width >= 1024 && (
-          <div className="Sidebar__box">
-            <Logo width={48} height={48} />
-            <h4 className="Sidebar__title">Secure Guide</h4>
-          </div>
-        )}
-        {width < 1024 && (
-          <span className="Sidebar__sidebarMenu" onClick={onClose}>
-            <Menu />
-          </span>
-        )}
-        <AddChat />
-      </div>
+      <header className="Sidebar__header">
+        {width >= 1024 && <Logo width={48} height={48} />}
+        {width < 1024 && <CloseMenuIcon onCloseSidebar={onClose} />}
+        <AddChatIcon iconColor="#6538ef" />
+      </header>
       <div className="Sidebar__chats">
         <Chats isMobile={width < 1024} onCloseSidebar={onClose} />
       </div>

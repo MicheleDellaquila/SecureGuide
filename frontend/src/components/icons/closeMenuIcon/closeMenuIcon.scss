@@ -1,11 +1,5 @@
-.AddChat {
+.CloseMenuIcon {
   padding: 0.8rem;
-  color: var(--primary-color-600);
-  cursor: pointer;
-
-  &__icon {
-    color: inherit;
-  }
 
   &:hover,
   &:active {

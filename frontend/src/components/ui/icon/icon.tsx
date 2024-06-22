@@ -1,16 +1,20 @@
-// import React from "react";
-// import * as LucideIcons from "lucide-react";
+import { ElementType } from "react";
+import * as Icons from "lucide-react";
 
-// const Icon = ({ name, size = 24, color = "black", ...rest }) => {
-//   // Verifica se l'icona richiesta esiste tra le icone disponibili
-//   if (!LucideIcons[name]) {
-//     console.error(`Icon '${name}' non trovata in Lucide Icons.`);
-//     return null;
-//   }
+// Icon props
+interface IconProps {
+  name: keyof typeof Icons;
+  size?: number;
+  color?: string;
+}
 
-//   const IconComponent = LucideIcons[name];
+const Icon = ({ name, size = 24, color, ...props }: IconProps) => {
+  const IconComponent = Icons[name] as ElementType;
 
-//   return <IconComponent size={size} color={color} {...rest} />;
-// };
+  // return error if icon not found
+  if (!IconComponent) throw new Error(`Icon '${name}' not found`);
 
-// export default Icon;
+  return <IconComponent size={size} color={color} {...props} />;
+};
+
+export default Icon;

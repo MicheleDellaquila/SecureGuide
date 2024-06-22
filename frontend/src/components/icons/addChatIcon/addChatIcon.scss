@@ -1,0 +1,11 @@
+.AddChatIcon {
+  padding: 0.8rem;
+  color: var(--primary-color-600);
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background-color: var(--primary-color-300);
+    border-radius: var(--border-radius-sm);
+  }
+}

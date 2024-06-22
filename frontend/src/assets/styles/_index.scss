@@ -65,3 +65,9 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.Backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba($color: var(--backdrop-color-rgb), $alpha: 0.15);
+}
