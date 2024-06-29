@@ -2,7 +2,7 @@ import type { FieldErrors, UseFormClearErrors } from "react-hook-form";
 import useShowPassword from "@/hooks/useShowPassword";
 
 // components
-import { Field } from "@ui/field/field";
+import Field from "@ui/field/field";
 import ShowPasswordIcon from "@icons/showPasswordIcon/showPasswordIcon";
 import Button from "@ui/button/button";
 

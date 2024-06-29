@@ -2,8 +2,7 @@ import type { FieldErrors, UseFormClearErrors } from "react-hook-form";
 import useCloseModal from "./hook/useCloseModal";
 
 // components
-import { Field } from "@/components/ui/field/field";
-import Input from "@/components/ui/input/input";
+import Field from "@/components/ui/field/field";
 import Button from "@/components/ui/button/button";
 
 // update profile props

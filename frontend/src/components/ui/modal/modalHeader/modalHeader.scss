@@ -1,0 +1,17 @@
+.ModalHeader {
+  padding: 1.6rem;
+  border-block-end: 1px solid var(--grayscale-color-200);
+
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-title {
+      font-family: var(--font-family);
+      font-size: 2rem;
+      line-height: 1.5;
+      color: var(--grayscale-color-950);
+    }
+  }
+}

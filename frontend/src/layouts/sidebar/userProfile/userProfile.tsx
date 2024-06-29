@@ -3,7 +3,6 @@ import useShowModal from "./hooks/useShowModal";
 import useSignOut from "./hooks/useSignOut";
 
 // components
-import Modal from "@ui/modal/modal";
 import UpdateProfileModal from "./updateProfileModal/updateProfileModal";
 import LogOutIcon from "@icons/logOutIcon/logOutIcon";
 
@@ -17,11 +16,7 @@ const UserProfile = () => {
 
   return (
     <>
-      {showModal && (
-        <Modal>
-          <UpdateProfileModal onClose={handleModal} />
-        </Modal>
-      )}
+      {showModal && <UpdateProfileModal onClose={handleModal} />}
       <div className="UserProfile">
         <div className="UserProfile__profile" onClick={handleModal}>
           <img className="UserProfile__profile-img" src={Profile} width={32} height={32} alt="profile" />

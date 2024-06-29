@@ -1,18 +1,18 @@
-import { forwardRef, type HTMLProps } from "react";
+import { forwardRef, type HTMLAttributes, } from "react";
 import "./textarea.scss";
 import clsx from "clsx";
 import { useFormContext } from "react-hook-form";
 import getRef from "@/utils/refs";
 
 // textare props
-interface TextareaProps extends HTMLProps<HTMLTextAreaElement> {
+interface TextareaProps extends HTMLAttributes<HTMLTextAreaElement> {
   className?: string;
   placeholder?: string;
   name: string;
 }
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, type, placeholder, name, ...props }, ref) => {
+  ({ className, placeholder, name, ...props }, ref) => {
     const { register } = useFormContext();
     const { ref: refInput, ...rest } = register(name);
 

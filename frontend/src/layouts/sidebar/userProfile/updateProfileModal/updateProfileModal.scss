@@ -1,32 +1,13 @@
 .UpdateProfileModal {
-  width: 42rem;
+  position: relative;
 
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2.4rem;
-
-    &-title {
-      font-size: 2rem;
-      color: var(--grayscale-color-950);
-    }
-
-    &-closeIcon {
-      color: var(--grayscale-color-500);
-      cursor: pointer;
-
-      &:hover {
-        color: var(--grayscale-color-600);
-      }
-    }
+  &__header span:hover {
+    background-color: var(--grayscale-color-100);
+    border-radius: var(--border-radius-sm);
   }
 
   &__body {
-    padding: 0.8rem;
-  }
-
-  &__form {
-    padding: 1.6rem;
+    padding-block: 3.2rem 1.6rem;
+    padding-inline: 1.6rem;
   }
 }

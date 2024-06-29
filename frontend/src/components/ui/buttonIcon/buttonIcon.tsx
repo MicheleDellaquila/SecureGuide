@@ -11,9 +11,9 @@ interface ButtonIconProps extends HTMLAttributes<HTMLSpanElement> {
   onClick?: () => void;
 }
 
-const ButtonIcon = ({ className, onClick, children, ...props }: PropsWithChildren<ButtonIconProps>) => {
+const ButtonIcon = ({ className, onClick, children, ...rest }: PropsWithChildren<ButtonIconProps>) => {
   return (
-    <span className={clsx("ButtonIcon", className)} onClick={onClick} {...props}>
+    <span className={clsx("ButtonIcon", className)} onClick={onClick} {...rest}>
       {children}
     </span>
   );

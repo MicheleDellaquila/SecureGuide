@@ -1,11 +1,14 @@
+import type { HTMLAttributes } from "react";
 import clsx from "clsx";
+
+// components
 import ButtonIcon from "@ui/buttonIcon/buttonIcon";
 
 // style
 import "./closeIcon.scss";
 
 // CloseIcon props
-interface CloseIconProps {
+interface CloseIconProps extends HTMLAttributes<HTMLSpanElement> {
   className?: string;
   colorIcon: string;
   sizeIcon?: number;

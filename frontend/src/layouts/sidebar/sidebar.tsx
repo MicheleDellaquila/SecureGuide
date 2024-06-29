@@ -3,8 +3,8 @@ import useWindowSize from "@/hooks/useWindowSize";
 
 // components
 import Logo from "@ui/logo/logo";
-import CloseMenuIcon from "@icons/closeMenuIcon/closeMenuIcon";
 import AddChatIcon from "@icons/addChatIcon/addChatIcon";
+import CloseIcon from "@icons/closeIcon/closeIcon";
 import Chats from "@/layouts/sidebar/chats/chats";
 import UserProfile from "./userProfile/userProfile";
 
@@ -20,7 +20,7 @@ const Sidebar = ({ onClose }: SidebarProps) => {
     <aside className="Sidebar">
       <header className="Sidebar__header">
         {width >= 1024 && <Logo width={48} height={48} />}
-        {width < 1024 && <CloseMenuIcon onCloseSidebar={onClose} />}
+        {width < 1024 && <CloseIcon className="Sidebar__header-closeIcon" onClick={onClose} colorIcon="#6538ef" />}
         <AddChatIcon iconColor="#6538ef" />
       </header>
       <div className="Sidebar__chats">

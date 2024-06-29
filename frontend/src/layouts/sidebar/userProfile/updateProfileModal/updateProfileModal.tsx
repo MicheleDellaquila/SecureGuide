@@ -2,7 +2,7 @@ import useUpdateProfile from "./hook/useUpdateProfile";
 import updateProfileSchema from "./updateProfileZodSchema";
 
 // components
-import { X } from "lucide-react";
+import Modal from "@ui/modal/modal";
 import Form from "@/components/ui/form/form";
 import UpdateProfileForm from "./updateProfileForm/updateProfileForm";
 
@@ -18,14 +18,15 @@ const UpdateProfileModal = ({ onClose }: UpdateProfileModalProps) => {
   const { user, updateUser } = useUpdateProfile();
 
   return (
-    <div className="UpdateProfileModal">
-      <div className="UpdateProfileModal__header">
-        <h3 className="UpdateProfileModal__header-title">Modifica Profilo</h3>
-        <span className="UpdateProfileModal__header-closeIcon" onClick={onClose}>
-          <X />
-        </span>
-      </div>
-      <div className="UpdateProfileModal__body">
+    <Modal>
+      <Modal.Header
+        className="UpdateProfileModal__header"
+        title="Modifica Profilo"
+        onClose={onClose}
+        colorIcon="#7c7c7c"
+        sizeIcon={20}
+      />
+      <Modal.Body className="UpdateProfileModal__body">
         <Form
           key="updateProfileForm"
           className="UpdateProfileModal__form"
@@ -35,8 +36,8 @@ const UpdateProfileModal = ({ onClose }: UpdateProfileModalProps) => {
         >
           <UpdateProfileForm onClose={onClose} />
         </Form>
-      </div>
-    </div>
+      </Modal.Body>
+    </Modal>
   );
 };
 
